@@ -1,3 +1,8 @@
+a {
+  color: blue;
+  text-decoration: none; /* no underline */
+}
+
 .event-a {
   display: block;
   min-height: 100px;

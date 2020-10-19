@@ -25,11 +25,19 @@ localStorage.setItem(
     category: "Jazz",
     artistName: "Ozzy",
     date: "19 oktober",
-    plats: "Globen",
+    arena: "Globen",
   })
 );
 
-// localStorage.setItem("2", "testing");
+localStorage.setItem(
+  "2",
+  JSON.stringify({
+    category: "Jazz",
+    artistName: "Ozzy",
+    date: "19 oktober",
+    arena: "Globen",
+  })
+);
 
 function displayEvents() {
   let keys = Object.keys(localStorage);
@@ -37,11 +45,30 @@ function displayEvents() {
     let data = JSON.parse(localStorage.getItem(key));
     let event = document.createElement("a");
     event.className = "event-a";
+    event.setAttribute("href", "home.html");
+
     let p = document.createElement("p");
     p.textContent = data.category;
     event.append(p);
+
+    let h3 = document.createElement("h3");
+    h3.textContent = data.artistName;
+    event.append(h3);
+
+    let span1 = document.createElement("span");
+    span1.textContent = data.date;
+    event.append(span1);
+
+    let span2 = document.createElement("span");
+    span2.textContent = data.arena;
+    event.append(span2);
+
     contentDiv.append(event);
   }
 }
+
+//skapa funktion som skapar html object och skickar till display events. mindre rörigt.
+//dessa objekt bör sparas någonstans om man
+//display bör bara visa, objekten ska skapas i admin!
 
 displayEvents();
