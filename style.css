@@ -1,0 +1,9 @@
+.event-a {
+  display: block;
+  min-height: 100px;
+}
+
+.event-a:hover {
+  background-color: red;
+  color: green;
+}
