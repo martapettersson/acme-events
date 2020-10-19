@@ -42,12 +42,26 @@
 
 }
 
-.divContent {
+#divContent {
     flex-grow: 1;
-    background: #331E4D;
+    background: #bbafc9;
     min-height: 450px;
-    justify-content: center;
+    
+    
+    
   }
+#divContent img {
+    max-width: 500px;
+   
+
+}
+
+#divContent p {
+    max-width: 500px;
+   
+    font-size: 16px;
+    margin-right: auto;
+}
 
 .page-footer {
     background: #9984D4;
