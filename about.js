@@ -2,6 +2,8 @@ class About {
 	constructor() {
 		this.showAbout();
 	}
+	// Metod för att byta ut innehåll i divContent till Om oss text och bild
+	// körs i constructorn på en gång
 	showAbout() {
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
