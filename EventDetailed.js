@@ -8,17 +8,20 @@ class EventDetailed {
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
 
-		let aboutDiv = document.createElement("div");
-		divContent.appendChild(aboutDiv);
-		let aboutPic = document.createElement("img");
-		let aboutHeadline = document.createElement("h1");
-		let aboutText = document.createElement("p");
-		aboutDiv.appendChild(aboutPic);
-		aboutDiv.appendChild(aboutHeadline);
-		aboutDiv.appendChild(aboutText);
-		aboutPic.src = "img/kiss.jpg";
-		aboutHeadline.innerHTML = "KISS ON TOUR";
-		aboutText.innerHTML =
+		let eventDiv = document.createElement("div");
+		divContent.appendChild(eventDiv);
+		let eventPic = document.createElement("img");
+		let eventHeadline = document.createElement("h1");
+		let eventSecondHeadline = document.createElement("h2");
+		let eventText = document.createElement("p");
+		eventDiv.appendChild(eventPic);
+		eventDiv.appendChild(eventHeadline);
+		eventDiv.appendChild(eventSecondHeadline);
+		eventDiv.appendChild(eventText);
+		eventPic.src = "img/kiss.jpg";
+		eventHeadline.innerHTML = "KISS ON TOUR";
+		eventSecondHeadline.innerHTML = "19 Juni - Friends Arena";
+		eventText.innerHTML =
 			"INFORMATION" +
 			"<br />" +
 			"19 juni, kl 19:30" +
