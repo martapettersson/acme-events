@@ -7,4 +7,7 @@ document.getElementById("divContent").appendChild(text);
 
 const img2 = document.createElement("img");
 img2.src = 'images/loreen.jpg'
+const text2 = document.createElement("span")
+text2.innerHTML ="tralal lorem looooooooooooooooooorem tetralal lorem looooooooooooooooooorem tetralal lorem looooooooooooooooooorem tetralal lorem looooooooooooooooooorem te"       
+document.getElementById("divContent").appendChild(text2);
 document.getElementById("divContent").appendChild(img2);

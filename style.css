@@ -13,7 +13,8 @@
   }
 
 .page-header {
-    background: white;
+    background: #9984D4;
+    
   }
 
 .page-header nav {
@@ -43,24 +44,29 @@
 }
 
 #divContent {
-    flex-grow: 1;
+    
     background: #bbafc9;
     min-height: 450px;
-    
+    display: flex;
+    flex-flow: wrap row;
+    flex-grow: 1;
+    justify-content: space-around;
+    padding: 0px
     
     
   }
+
 #divContent img {
-    max-width: 500px;
-   
+    max-width: 510px;
+    
 
 }
 
-#divContent p {
-    max-width: 500px;
-   
+#divContent span {
+    max-width: 480px;
+    margin-top: 15px;
     font-size: 16px;
-    margin-right: auto;
+    margin-left: 15px;
 }
 
 .page-footer {
