@@ -3,6 +3,7 @@ const contentDiv = document.getElementById("divContent");
 class UI {
 	//statisk klass
 	static displayHeadline() {
+		contentDiv.innerHTML = "";
 		let headline = document.createElement("h4");
 		headline.textContent = "EVENTS";
 		headline.classList.add("event-headline");
@@ -86,25 +87,5 @@ class UI {
 	}
 }
 
-localStorage.setItem(
-	"1",
-	JSON.stringify({
-		category: "Jazz",
-		artistName: "Ozzy",
-		date: "19 oktober",
-		arena: "Globen",
-	})
-);
 
-localStorage.setItem(
-	"2",
-	JSON.stringify({
-		category: "Jazz",
-		artistName: "Ozzy",
-		date: "19 oktober",
-		arena: "Globen",
-	})
-);
 
-UI.displayHeadline();
-UI.displayEvents();
