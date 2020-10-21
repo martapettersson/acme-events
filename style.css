@@ -56,6 +56,7 @@
     
   }
 
+
 #divContent img {
     max-width: 510px;
     
@@ -67,6 +68,7 @@
     margin-top: 15px;
     font-size: 16px;
     margin-left: 15px;
+    float: right;
 }
 
 .page-footer {
@@ -88,8 +90,5 @@
     margin-right: 20px;
 }
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+ 
   
