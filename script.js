@@ -5,4 +5,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	aboutBtn.addEventListener("click", function (e) {
 		UI.showAbout();
 	});
+
+	let detailBtn = document.getElementById("detailBtn");
+	detailBtn.addEventListener("click", function (e) {
+		UI.showEventDetailed();
+	});
 });

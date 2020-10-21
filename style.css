@@ -1,22 +1,22 @@
 a {
-  color: blue;
-  text-decoration: none; /* no underline */
+	color: blue;
+	text-decoration: none; /* no underline */
 }
 
 .event-a {
-  display: block;
-  min-height: 100px;
+	display: block;
+	min-height: 100px;
 }
 
 .event-a:hover {
-  background-color: red;
-  color: green;
+	background-color: red;
+	color: green;
 }
 
 .event-headline {
-  border-bottom: 1px solid black;
-  margin: 0 0 15px;
-  text-align: center;
+	border-bottom: 1px solid black;
+	margin: 0 0 15px;
+	text-align: center;
 }
 img {
 	float: right;

@@ -1,34 +1,34 @@
 const contentDiv = document.getElementById("divContent");
 
 class UI {
-  //statisk klass
-  static displayHeadline() {
-    let headline = document.createElement("h4");
-    headline.textContent = "EVENTS";
-    headline.classList.add("event-headline");
-    contentDiv.append(headline);
-  }
+	//statisk klass
+	static displayHeadline() {
+		let headline = document.createElement("h4");
+		headline.textContent = "EVENTS";
+		headline.classList.add("event-headline");
+		contentDiv.append(headline);
+	}
 
-  static displayEvents() {
-    let keys = Object.keys(localStorage);
-    for (let key of keys) {
-      let data = JSON.parse(localStorage.getItem(key));
-      let event = document.createElement("a");
-      event.classList.add("event-a");
-      event.setAttribute("href", "home.html");
+	static displayEvents() {
+		let keys = Object.keys(localStorage);
+		for (let key of keys) {
+			let data = JSON.parse(localStorage.getItem(key));
+			let event = document.createElement("a");
+			event.classList.add("event-a");
+			event.setAttribute("href", "home.html");
 
-      event.innerHTML = `
+			event.innerHTML = `
         <p>${data.category}</p>
         <h3>${data.artistName}</h3>
         <span>${data.date}</span>
         <span>${data.arena}</span>
       `;
 
-      contentDiv.append(event);
-    }
-  }
+			contentDiv.append(event);
+		}
+	}
 
-  static showAbout() {
+	static showAbout() {
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
 
@@ -51,29 +51,60 @@ class UI {
 			"<br />" +
 			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 	}
+
+	static showEventDetailed() {
+		let divContent = document.getElementById("divContent");
+		divContent.innerHTML = "";
+
+		let eventDiv = document.createElement("div");
+		divContent.appendChild(eventDiv);
+		let eventPic = document.createElement("img");
+		let eventHeadline = document.createElement("h1");
+		let eventSecondHeadline = document.createElement("h2");
+		let eventText = document.createElement("p");
+		eventDiv.appendChild(eventPic);
+		eventDiv.appendChild(eventHeadline);
+		eventDiv.appendChild(eventSecondHeadline);
+		eventDiv.appendChild(eventText);
+		eventPic.src = "img/kiss.jpg";
+		eventHeadline.innerHTML = "KISS ON TOUR";
+		eventSecondHeadline.innerHTML = "19 Juni - Friends Arena";
+		eventText.innerHTML =
+			"INFORMATION" +
+			"<br />" +
+			"19 juni, kl 19:30" +
+			"<br />" +
+			"475-975 SEK + serviceavgift" +
+			"<br />" +
+			"Åldersgräns: Ingen åldersgräns" +
+			"<br />" +
+			"Max antal blijetter: 10 per/person" +
+			"<br />" +
+			"Alla besökare måste ha biljett" +
+			"<br />" +
+			"Arrangör: Live Nation";
+	}
 }
 
 localStorage.setItem(
-  "1",
-  JSON.stringify({
-    category: "Jazz",
-    artistName: "Ozzy",
-    date: "19 oktober",
-    arena: "Globen",
-  })
+	"1",
+	JSON.stringify({
+		category: "Jazz",
+		artistName: "Ozzy",
+		date: "19 oktober",
+		arena: "Globen",
+	})
 );
 
 localStorage.setItem(
-  "2",
-  JSON.stringify({
-    category: "Jazz",
-    artistName: "Ozzy",
-    date: "19 oktober",
-    arena: "Globen",
-  })
+	"2",
+	JSON.stringify({
+		category: "Jazz",
+		artistName: "Ozzy",
+		date: "19 oktober",
+		arena: "Globen",
+	})
 );
-
 
 UI.displayHeadline();
 UI.displayEvents();
-
