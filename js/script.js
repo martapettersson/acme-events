@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 			arena: "Globen",
 		})
 	);
-	
+
 	localStorage.setItem(
 		"2",
 		JSON.stringify({
@@ -29,11 +29,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	detailBtn.addEventListener("click", function (e) {
 		UI.showEventDetailed();
 	});
-	let eventBtn = document.getElementById("eventBtn")
+	let eventBtn = document.getElementById("eventBtn");
 	eventBtn.addEventListener("click", function (e) {
-		console.log("hejhej")
-		UI.displayHeadline()
-		UI.displayEvents()
+		console.log("hejhej");
+		UI.displayHeadline();
+		UI.displayEvents();
 	});
-	
 });

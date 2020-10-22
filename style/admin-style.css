@@ -1,0 +1,14 @@
+#event-flex-container{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+}
+
+#event-flex-form{
+    display: flex;
+    flex-direction: column;
+}
+
+#event-table{
+    width: 33%;
+}

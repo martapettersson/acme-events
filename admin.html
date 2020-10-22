@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="style/admin-style.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id='event-flex-container'>
+			<h2>Redigera Event</h2>
+			<form id='event-flex-form'> 
+				<label>Artistnamn</label>
+				<input id='artist-name' type="text">
+				<label>Datum</label>
+				<input id='date' type="text">
+				<label>Kategori</label>
+				<select id='category-select' name="" id="">
+					<option value="jazz">Jazz</option>
+					<option value="rock">Rock</option>
+					<option value="pop">Pop</option>
+					<option value="schlager">Schlager</option>
+					<option value="klassiskt">Klassiskt</option>
+				</select>
+				<label>Arena</label>
+				<select id='arena-select' name="" id="">
+					<option value="globen">globen</option>
+					<option value="tele2arena">tele2 arena</option>
+					<option value="friendsarena">friends arena</option>
+					<option value="annexet">annexet</option>
+					<option value=""></option>
+				</select>
+
+				<button id='event-submit-btn'type="button">Lägg till event</button>
+			</form>
+
+			<table>
+				<tbody id="event-table">
+					<tr>
+						<th>Artistnamn</th>
+						<th>Datum</th>
+						<th>Kategori</th>
+						<th>Arena</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div></div>
+		<div></div>
+		<script src="js/admin.js"></script>
+	</body>
+</html>
