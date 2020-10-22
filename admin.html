@@ -7,6 +7,7 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<button type='button' id='clear'>Clear localstorage</button>
 		<div id='event-flex-container'>
 			<h2>Redigera Event</h2>
 			<form id='event-flex-form'> 
@@ -16,6 +17,7 @@
 				<input id='date' type="text">
 				<label>Kategori</label>
 				<select id='category-select' name="" id="">
+					<option value="-" selected>Välj en kategori</option>
 					<option value="jazz">Jazz</option>
 					<option value="rock">Rock</option>
 					<option value="pop">Pop</option>
@@ -24,6 +26,7 @@
 				</select>
 				<label>Arena</label>
 				<select id='arena-select' name="" id="">
+					<option value="-" selected>Välj en arena</option>
 					<option value="globen">globen</option>
 					<option value="tele2arena">tele2 arena</option>
 					<option value="friendsarena">friends arena</option>
@@ -41,8 +44,9 @@
 						<th>Datum</th>
 						<th>Kategori</th>
 						<th>Arena</th>
+						<th>DELETE/EDIT</th>
 					</tr>
-
+					
 				</tbody>
 			</table>
 		</div>
