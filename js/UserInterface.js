@@ -1,7 +1,7 @@
 const contentDiv = document.getElementById("divContent");
 
 class UI {
-	//statisk klass
+	//statisk klass som uppdaterar allt som visas på skärmen
 	static displayHeadline() {
 		contentDiv.innerHTML = "";
 		let headline = document.createElement("h4");
