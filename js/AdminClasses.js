@@ -40,7 +40,7 @@ class Category {
     }
 }
 
-class AdminLogic {
+class EventControl {
 
     static createEvent(){
         let artist = document.getElementById('artist-name').value
@@ -54,28 +54,28 @@ class AdminLogic {
 
     }
 
-    static removeEvenets(){
-
+    static removeEventObject(id){
+        localStorage.removeItem(id)     
     }
-    //ta bort events
-    //uppdatera events
 }
 
 class AdminUI {
     static showEvents(){
         let keys = Object.keys(localStorage).sort();
         for (let key of keys) {
-            console.log(keys)
             let eventObject = JSON.parse(localStorage.getItem(key));
             let table = document.getElementById('event-table')
-            let newRow = table.insertRow(-1)
-            newRow.innerHTML+= `
+            let tr = document.createElement('tr')
+            tr.id = key
+            tr.innerHTML+= `
                 <td>${eventObject.artistName}</td>
                 <td>${eventObject.date}</td>
                 <td>${eventObject.category}</td>
                 <td>${eventObject.arena}</td>
-                <td><span>DELETE</span> <span>EDIT</span></td>
+                <td><span class='delete'>DELETE</span></td> 
+                <td><span>EDIT</span></td>
             `
+            table.append(tr)
         }
 
     }
@@ -88,4 +88,6 @@ class AdminUI {
     static clearForm(){
         document.getElementById('event-flex-form').reset()
     }
+
+
 }

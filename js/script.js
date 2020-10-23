@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	});
 	let eventBtn = document.getElementById("eventBtn");
 	eventBtn.addEventListener("click", function (e) {
-		console.log("hejhej");
 		UI.displayHeadline();
 		UI.displayEvents();
 	});
