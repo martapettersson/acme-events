@@ -29,6 +29,10 @@ class UI {
 		}
 	}
 
+	showFrontPage(){
+		
+	}
+
 	static showAbout() {
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
