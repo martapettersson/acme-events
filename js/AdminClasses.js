@@ -77,6 +77,7 @@ class AdminUI {
 	}
 
 	static clearTable() {
+		// Hitta snyggare sätt att göra detta!
 		//Rensar tabellen med events.
 		let eventTable = document.getElementById("event-table");
 		eventTable.innerHTML =
