@@ -97,5 +97,13 @@ class AdminUI {
         document.getElementById('event-flex-form').reset()
     }
 
+    static showCategories(){
+        //metod som visar en lista/tabell kategorierna
+    }
+
+    static showArenas(){
+        //metod som visar en lista/tabell med arenorna
+    }
+
 
 }
