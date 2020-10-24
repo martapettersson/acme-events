@@ -32,6 +32,7 @@ class UI {
 	static showFrontPage() {
 
 		let divContent = document.getElementById("divContent");
+		divContent.innerHTML = "";
 		
 		let frontpageContent_1 = document.createElement("div");
 		divContent.appendChild(frontpageContent_1);
