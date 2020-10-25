@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	let homeBtn = document.getElementById("homeBtn");
 	homeBtn.addEventListener("click", function(e) {
 		UI.showFrontPage();
-
 	});
 
 	let aboutBtn = document.getElementById("aboutBtn");
@@ -24,4 +23,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		UI.displayHeadline();
 		UI.displayEvents();
 	});
+	
 });
+
