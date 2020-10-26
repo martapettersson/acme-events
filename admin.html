@@ -7,16 +7,15 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<button type='button' id='clear'>Clear localstorage</button>
-		<div id='event-flex-container'>
+		<div id="event-flex-container">
 			<h2>Redigera Event</h2>
-			<form id='event-flex-form'> 
+			<form id="event-flex-form">
 				<label>Artistnamn</label>
-				<input id='artist-name' type="text">
+				<input id="artist-name" type="text" />
 				<label>Datum</label>
-				<input id='date' type="text">
+				<input id="date" type="date" />
 				<label>Kategori</label>
-				<select id='category-select' name="" id="">
+				<select id="category-select" name="" id="">
 					<option value="-" selected>Välj en kategori</option>
 					<option value="jazz">Jazz</option>
 					<option value="rock">Rock</option>
@@ -25,7 +24,7 @@
 					<option value="klassiskt">Klassiskt</option>
 				</select>
 				<label>Arena</label>
-				<select id='arena-select' name="" id="">
+				<select id="arena-select" name="" id="">
 					<option value="-" selected>Välj en arena</option>
 					<option value="globen">globen</option>
 					<option value="tele2arena">tele2 arena</option>
@@ -34,7 +33,8 @@
 					<option value=""></option>
 				</select>
 
-				<button id='event-submit-btn'type="button">Lägg till event</button>
+				<button id="event-submit-btn" type="button">Lägg till event</button>
+				<button type="button" id="event-edit-btn">Ändra event</button>
 			</form>
 
 			<table>
@@ -47,7 +47,6 @@
 						<th>DELETE</th>
 						<th>EDIT</th>
 					</tr>
-					
 				</tbody>
 			</table>
 		</div>

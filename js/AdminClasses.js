@@ -1,10 +1,5 @@
-// Kanske hitta snyggare lösning för detta? Försök få in i klass
-let id_counter = 0;
-
 class Event {
-	//Skapar ett eventobjekt
 	constructor(artistName, date, category, arena) {
-		// this.id = localStorage.length;
 		this.artistName = artistName;
 		this.date = date;
 		this.category = category;
@@ -35,21 +30,53 @@ class Category {
 class EventControl {
 	//Klass som skapar nya eventobjekt, gör om dem till JSON-objekt som den lägger till i localstorage
 	//Tar även bort och uppdaterar events som ligger i local storage.
+	constructor() {
+		this.id = 0;
+	}
 
-	static createEvent() {
+	createEvent() {
 		let artist = document.getElementById("artist-name").value;
 		let date = document.getElementById("date").value;
 		let category = document.getElementById("category-select").value;
 		let arena = document.getElementById("arena-select").value;
 
 		let event = new Event(artist, date, category, arena);
+		localStorage.setItem(this.id, JSON.stringify(event));
 
-		localStorage.setItem(id_counter, JSON.stringify(event));
-		id_counter++;
+		this.id++;
 	}
 
-	static removeEventObject(id) {
+	removeEventObject(id) {
 		localStorage.removeItem(id);
+	}
+
+	editEventObject(id) {
+		//Lägger till informationen från
+		let eventObj = JSON.parse(localStorage.getItem(id));
+		document.getElementById("artist-name").value = eventObj.artistName;
+		document.getElementById("date").value = eventObj.date;
+		document.getElementById("category-select").value = eventObj.category;
+		document.getElementById("arena-select").value = eventObj.arena;
+
+		let saveFunction = () => {
+			let artist = document.getElementById("artist-name").value;
+			let date = document.getElementById("date").value;
+			let category = document.getElementById("category-select").value;
+			let arena = document.getElementById("arena-select").value;
+
+			let event = new Event(artist, date, category, arena);
+			localStorage.setItem(id, JSON.stringify(event));
+			saveBtn.removeEventListener("click", saveFunction);
+
+			document.getElementById("event-submit-btn").style.display = "inline";
+			document.getElementById("event-edit-btn").style.display = "none";
+			AdminUI.clearForm();
+			AdminUI.clearTable();
+			AdminUI.showEvents();
+		};
+
+		let saveBtn = document.getElementById("event-edit-btn");
+		saveBtn.addEventListener("click", saveFunction);
 	}
 }
 
@@ -70,7 +97,7 @@ class AdminUI {
                 <td>${eventObject.category}</td>
                 <td>${eventObject.arena}</td>
                 <td><span class='delete'>DELETE</span></td> 
-                <td><span>EDIT</span></td>
+                <td><span class='edit'>EDIT</span></td>
             `;
 			table.append(tr);
 		}
