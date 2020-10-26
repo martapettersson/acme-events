@@ -1,5 +1,10 @@
+@font-face {
+	font-family: myFont;
+	src: url(/Noto_Sans_JP/NotoSansJP-Regular.otf);
+}
+
 a {
-	color: blue;
+	color: 4e3436;
 	text-decoration: none; /* no underline */
 }
 
@@ -9,12 +14,12 @@ a {
 }
 
 .event-a:hover {
-	background-color: red;
-	color: green;
+	background-color: f16275;
+	color: 4e3436;
 }
 
 .event-headline {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid 4e3436;
 	margin: 0 0 15px;
 	text-align: center;
 }
@@ -22,96 +27,103 @@ img {
 	float: right;
 }
 .flex-container {
-    display: flex;
-    flex-flow: wrap column;
-    min-height: 100vh;
-    max-width: 1020px;
-    margin: auto;
-    
+	display: flex;
+	flex-flow: wrap column;
+	min-height: 100vh;
+	max-width: 1020px;
+	margin: auto;
 }
 
 .flex-container > * {
-    flex: 1 100%;
-    padding: 20px;
-  }
+	flex: 1 100%;
+	padding: 20px;
+}
+
+nav button {
+	font-family: myFont;
+	background-color: #f16275;
+	color: black;
+	text-transform: uppercase;
+	border: none;
+}
 
 .page-header {
-    background: #9984D4;
-    
-  }
+	background: white;
+	border: 2em solid #f16275;
+}
 
 .page-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#loginBtn {
+	font-family: myFont;
+	background-color: #f7e334;
+	color: black;
+	text-transform: uppercase;
+	border: none;
 }
 
 .page-header ul {
-    display: flex;
-    order: 1;
-    width: 100%;
-    margin: auto;
-    justify-content: center;
-    list-style-type: none;
+	display: flex;
+	order: 1;
+	width: 100%;
+	margin: auto;
+	justify-content: center;
+	list-style-type: none;
 }
 .page-header ul li {
-    padding-right: 15px;
-}
-.page-header .login {
-    font-family: 'Times New Roman', Times, serif;
-    padding: 5px 18px;
-    border: 1px solid;
-    border-radius: 5px;
-
-}
-
-#divContent {
-    
-    background: #bbafc9;
-    min-height: 450px;
-    display: flex;
-    flex-flow: wrap column;
-    flex-grow: 1;
-    justify-content: space-around;
-    padding: 0px
-    
-    
-  }
-
-
-#divContent img {
-    max-width: 510px;
-    
-
-}
-
-#divContent span {
-    max-width: 480px;
-    margin-top: 15px;
-    font-size: 16px;
-    
-    
+	padding-right: 15px;
 }
 
 .page-footer {
-    background: #9984D4;
-    display: flex;
-    flex-direction: column-reverse;
-  }
+	background: #f1ced3;
+	display: flex;
+	flex-direction: column-reverse;
+}
 
-.page-footer ul{
-    display: flex;
-    list-style-type: none;
-    margin-bottom: 5px;
-    width: 100%;
-    margin: auto;
-    justify-content: center;
-
+.page-footer ul {
+	display: flex;
+	list-style-type: none;
+	margin-bottom: 5px;
+	width: 100%;
+	margin: auto;
+	justify-content: center;
 }
 .page-footer ul li {
-    margin-right: 20px;
+	margin-right: 20px;
 }
 
- 
-  
+#divContent {
+	font-family: myFont;
+	background: #f7e334;
+	min-height: 450px;
+	display: flex;
+	flex-flow: wrap column;
+	flex-grow: 1;
+	justify-content: space-around;
+	padding: 0px;
+}
+
+#divContent img {
+	max-width: 510px;
+}
+
+#divContent span {
+	max-width: 480px;
+	margin-top: 15px;
+	font-size: 16px;
+}
+
+/*
+#4e3436 - WOODY BROWN
+#f7e334 - GOLDEN DREAM
+#f16275 - FROLY
+#eec584 - TACAO
+#f6faf9 - AQUA HAZE
+
+https://fonts.google.com/specimen/Noto+Sans+JP
+*/
