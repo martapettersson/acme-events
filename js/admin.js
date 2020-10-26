@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			eventcontrol.removeEventObject(id);
 			AdminUI.clearTable();
 			AdminUI.showEvents();
+			//om man trycker på edit körs koden nedan
 		} else if (e.target.classList.contains("edit")) {
 			let id = e.target.parentElement.parentElement.id;
 			eventcontrol.editEventObject(id);
