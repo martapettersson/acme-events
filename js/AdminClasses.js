@@ -31,8 +31,8 @@ class EventControl {
 	//Klass som skapar nya eventobjekt, gör om dem till JSON-objekt som den lägger till i localstorage
 	//Tar även bort och uppdaterar events som ligger i local storage.
 	constructor() {
-		if (localStorage.getItem("idCounter") === null) {
-			localStorage.setItem("idCounter", 0);
+		if (localStorage.getItem("eventStorage") === null) {
+			localStorage.setItem("eventStorage", JSON.stringify({ idCounter: 0 }));
 		}
 	}
 
@@ -44,30 +44,34 @@ class EventControl {
 		let arena = document.getElementById("arena-select").value;
 
 		let event = new Event(artist, date, category, arena);
-		localStorage.setItem(
-			localStorage.getItem("idCounter"),
-			JSON.stringify(event)
-		);
 
-		localStorage.setItem(
-			"idCounter",
-			parseInt(localStorage.getItem("idCounter")) + 1
-		);
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		eventStorage[eventStorage.idCounter] = event;
+		eventStorage.idCounter++;
+
+		localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
 	}
 
 	removeEventObject(id) {
-		localStorage.removeItem(id);
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		delete eventStorage[id];
+		localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
 	}
 
 	editEventObject(id) {
 		//Lägger till informationen från ett eventobjekt i localstorage i form. Sätter sedan en eventlistener på editknappen.
 		//eventlistener-funktionen skapar ett nytt event-objekt och skriver över det gamla objetet i localstorage.
 		//tar sedan bort eventlistenerngör sedan spara-knappen osynlig och visar den ursprungliga submit-knappen.
-		let eventObj = JSON.parse(localStorage.getItem(id));
-		document.getElementById("artist-name").value = eventObj.artistName;
-		document.getElementById("date").value = eventObj.date;
-		document.getElementById("category-select").value = eventObj.category;
-		document.getElementById("arena-select").value = eventObj.arena;
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+
+		// let eventObj = JSON.parse(localStorage.getItem(id));
+		console.log(eventStorage);
+
+		document.getElementById("artist-name").value = eventStorage[id].artistName;
+		document.getElementById("date").value = eventStorage[id].date;
+		document.getElementById("category-select").value =
+			eventStorage[id].category;
+		document.getElementById("arena-select").value = eventStorage[id].arena;
 
 		let saveFunction = () => {
 			let artist = document.getElementById("artist-name").value;
@@ -76,7 +80,10 @@ class EventControl {
 			let arena = document.getElementById("arena-select").value;
 
 			let event = new Event(artist, date, category, arena);
-			localStorage.setItem(id, JSON.stringify(event));
+			//det här ska ändras
+
+			eventStorage[id] = event;
+			localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
 			saveBtn.removeEventListener("click", saveFunction);
 
 			document.getElementById("event-submit-btn").style.display = "inline";
@@ -96,10 +103,12 @@ class AdminUI {
 
 	static showEvents() {
 		//Går igenom alla events i localstorage och skriver ut dem i en tabell. Om key är idCounter hoppar den över
-		let keys = Object.keys(localStorage).sort();
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		let keys = Object.keys(eventStorage).sort();
 		for (let key of keys) {
 			if (key !== "idCounter") {
-				let eventObject = JSON.parse(localStorage.getItem(key));
+				//let eventObject = JSON.parse(localStorage.getItem(key));
+				let eventObject = eventStorage[key];
 				let table = document.getElementById("event-table");
 				let tr = document.createElement("tr");
 				tr.id = key;
