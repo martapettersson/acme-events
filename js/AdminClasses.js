@@ -51,7 +51,9 @@ class EventControl {
 	}
 
 	editEventObject(id) {
-		//Lägger till informationen från
+		//Lägger till informationen från ett eventobjekt i localstorage i form. Sätter sedan en eventlistener på editknappen.
+		//eventlistener-funktionen skapar ett nytt event-objekt och skriver över det gamla objetet i localstorage.
+		//gör sedan spara-knappen osynlig och visar den ursprungliga submit-knappen.
 		let eventObj = JSON.parse(localStorage.getItem(id));
 		document.getElementById("artist-name").value = eventObj.artistName;
 		document.getElementById("date").value = eventObj.date;
