@@ -11,29 +11,32 @@ class UI {
 	}
 
 	static displayEvents() {
-		let keys = Object.keys(localStorage);
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		let keys = Object.keys(eventStorage);
 		for (let key of keys) {
-			let data = JSON.parse(localStorage.getItem(key));
-			let event = document.createElement("a");
-			event.classList.add("event-a");
-			event.setAttribute("href", "home.html");
+			if (key !== "idCounter") {
+				let data = eventStorage[key];
+				console.log(data);
+				let event = document.createElement("a");
+				event.classList.add("event-a");
+				event.setAttribute("href", "home.html");
 
-			event.innerHTML = `
-        <p>${data.category}</p>
-        <h3>${data.artistName}</h3>
-        <span>${data.date}</span>
-        <span>${data.arena}</span>
-      `;
+				event.innerHTML = `
+				<p>${data.category}</p>
+				<h3>${data.artistName}</h3>
+				<span>${data.date}</span>
+				<span>${data.arena}</span>
+				`;
 
-			contentDiv.append(event);
+				contentDiv.append(event);
+			}
 		}
 	}
 
 	static showFrontPage() {
-
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
-		
+
 		let frontpageContent_1 = document.createElement("div");
 		divContent.appendChild(frontpageContent_1);
 		let frontpageImg_1 = document.createElement("img");
@@ -43,13 +46,14 @@ class UI {
 		frontpageContent_1.appendChild(frontpageHeading_1);
 		frontpageContent_1.appendChild(frontpageText_1);
 		frontpageImg_1.src = "img/kiss.jpg";
-		frontpageHeading_1.innerHTML = "KISS: End Of The Road World Tour + support Steel Panther";
-		frontpageText_1.innerHTML = 
-		"KISS konserten flyttats fram till 23 juni 2021." +
-		"<br />" +
-		"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
-		"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
-		
+		frontpageHeading_1.innerHTML =
+			"KISS: End Of The Road World Tour + support Steel Panther";
+		frontpageText_1.innerHTML =
+			"KISS konserten flyttats fram till 23 juni 2021." +
+			"<br />" +
+			"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
+			"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
+
 		let frontpageContent_2 = document.createElement("div");
 		divContent.appendChild(frontpageContent_2);
 		let frontpageImg_2 = document.createElement("img");
@@ -60,12 +64,11 @@ class UI {
 		frontpageContent_2.appendChild(frontpageText_2);
 		frontpageImg_2.src = "img/loreen.jpg";
 		frontpageHeading_2.innerHTML = "Loreen:";
-		frontpageText_2.innerHTML = 
-		"Loreen konserten flyttats fram till 28 juni 2021." +
-		"<br />" +
-		"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
-		"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
-
+		frontpageText_2.innerHTML =
+			"Loreen konserten flyttats fram till 28 juni 2021." +
+			"<br />" +
+			"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
+			"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
 	}
 
 	static showAbout() {
@@ -249,6 +252,4 @@ class UI {
 			"<br />" +
 			"Arrangör: Live Nation";
 	}
-
-	
 }
