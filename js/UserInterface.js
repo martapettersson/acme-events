@@ -11,12 +11,13 @@ class UI {
 	}
 
 	static displayEvents() {
+		//Lägg eventuellt till någon som kollar om 'eventStorage finns'
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		//beroende på parameter i funktionen sorterar den eller filtrerar den.
 		let keys = Object.keys(eventStorage);
 		for (let key of keys) {
 			if (key !== "idCounter") {
 				let data = eventStorage[key];
-				console.log(data);
 				let event = document.createElement("a");
 				event.classList.add("event-a");
 				event.setAttribute("href", "home.html");
@@ -32,6 +33,17 @@ class UI {
 			}
 		}
 	}
+
+	static displaySortButton() {
+		//Skapa funktion som skapar knappar eller något som gör att man kan sortera.
+		//Hur ska man sortera events? sort-funktion på alla events. separat funktion
+		//Något som man kan toogla senaste events (default) eller äldsta
+		//Använda displayEvents-funktionen för att re-render?
+	}
+
+	static sortEventDates() {}
+
+	static filterEvents() {}
 
 	static showFrontPage() {
 		let divContent = document.getElementById("divContent");
