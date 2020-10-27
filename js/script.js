@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 	let divContent = document.getElementById("divContent");
 	divContent.addEventListener("click", function (e) {
-		if (e.target.parentElement.classList.contains("frontDiv")) {
+		if (e.target.parentElement.parentElement.classList.contains("frontDiv")) {
 			UI.showEventDetailed();
 		}
 	});
