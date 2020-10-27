@@ -3,6 +3,107 @@
 	src: url(/Noto_Sans_JP/NotoSansJP-Regular.otf);
 }
 
+.flex-container {
+	display: flex;
+	flex-flow: wrap column;
+	min-height: 100vh;
+	max-width: 1020px;
+	margin: auto;
+	box-sizing: border-box;
+}
+
+.flex-container > * {
+	padding: 1em;
+}
+
+button {
+	font-family: myFont;
+	background-color: #f16275;
+	color: black;
+	font-size: 1em;
+	text-transform: uppercase;
+	border: none;
+}
+
+.page-header {
+	background-color: #f6faf9;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.page-header img {
+	display: flex;
+	width: 8em;
+}
+
+.page-header nav {
+	display: flex;
+}
+
+.page-header ul {
+	display: flex;
+	width: 100%;
+	margin: auto;
+	list-style-type: none;
+	justify-content: flex-end;
+}
+.page-header ul li {
+	padding-right: 1em;
+}
+
+#divContent {
+	border: 1em solid #f7e334;
+	font-family: myFont;
+	background-color: #f6faf9;
+	min-height: 450px;
+	display: flex;
+	flex-flow: wrap column;
+	justify-content: space-between;
+}
+
+#divContent img {
+	float: right;
+	max-width: 510px;
+}
+
+.frontDiv:hover {
+	opacity: 50%;
+}
+
+.page-footer {
+	font-family: myFont;
+	background-color: #f6faf9;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.page-footer ul {
+	display: flex;
+	list-style-type: none;
+	margin-bottom: 1em;
+	width: 100%;
+	margin: auto;
+	justify-content: center;
+}
+.page-footer ul li {
+	margin-right: 2em;
+}
+.page-footer button {
+	display: flex;
+	align-self: flex-end;
+}
+/*
+#4e3436 - WOODY BROWN
+#f7e334 - GOLDEN DREAM
+#f16275 - FROLY
+#eec584 - TACAO
+#f6faf9 - AQUA HAZE
+
+https://fonts.google.com/specimen/Noto+Sans+JP
+*/
+
 a {
 	color: 4e3436;
 	text-decoration: none; /* no underline */
@@ -23,107 +124,3 @@ a {
 	margin: 0 0 15px;
 	text-align: center;
 }
-img {
-	float: right;
-}
-.flex-container {
-	display: flex;
-	flex-flow: wrap column;
-	min-height: 100vh;
-	max-width: 1020px;
-	margin: auto;
-}
-
-.flex-container > * {
-	flex: 1 100%;
-	padding: 20px;
-}
-
-nav button {
-	font-family: myFont;
-	background-color: #f16275;
-	color: black;
-	text-transform: uppercase;
-	border: none;
-}
-
-.page-header {
-	background: white;
-	border: 2em solid #f16275;
-}
-
-.page-header nav {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-}
-
-#loginBtn {
-	font-family: myFont;
-	background-color: #f7e334;
-	color: black;
-	text-transform: uppercase;
-	border: none;
-}
-
-.page-header ul {
-	display: flex;
-	order: 1;
-	width: 100%;
-	margin: auto;
-	justify-content: center;
-	list-style-type: none;
-}
-.page-header ul li {
-	padding-right: 15px;
-}
-
-.page-footer {
-	background: #f1ced3;
-	display: flex;
-	flex-direction: column-reverse;
-}
-
-.page-footer ul {
-	display: flex;
-	list-style-type: none;
-	margin-bottom: 5px;
-	width: 100%;
-	margin: auto;
-	justify-content: center;
-}
-.page-footer ul li {
-	margin-right: 20px;
-}
-
-#divContent {
-	font-family: myFont;
-	background: #f7e334;
-	min-height: 450px;
-	display: flex;
-	flex-flow: wrap column;
-	flex-grow: 1;
-	justify-content: space-around;
-	padding: 0px;
-}
-
-#divContent img {
-	max-width: 510px;
-}
-
-#divContent span {
-	max-width: 480px;
-	margin-top: 15px;
-	font-size: 16px;
-}
-
-/*
-#4e3436 - WOODY BROWN
-#f7e334 - GOLDEN DREAM
-#f16275 - FROLY
-#eec584 - TACAO
-#f6faf9 - AQUA HAZE
-
-https://fonts.google.com/specimen/Noto+Sans+JP
-*/
