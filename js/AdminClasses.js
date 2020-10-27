@@ -9,27 +9,56 @@ class Event {
 /*--------------ARENA------------------*/
 class Arena {
 	constructor() {
-		this.arenaArray = [];
+		if (localStorage.getItem("arenaStorage") === null) {
+			localStorage.setItem(
+				"arenaStorage",
+				JSON.stringify(["Globen", "Annexet"])
+			);
+		}
 	}
 
 	addArena() {
+		// adderar ny arena från admin gränsnitt till localStorage och sparar i array
+
+		let arenaStorage = JSON.parse(localStorage.getItem("arenaStorage"));
 		let arenaName = document.getElementById("arena-name").value;
-		this.arenaArray.push(arenaName);
 
-		// //sen ska man få tag i Arena Select i admingränssnitt och lägga till nytt option
-		// let arenaSelect = document.getElementById("arena-select");
+		arenaStorage.push(arenaName);
 
-		// for (arena of this.arenaArray) {
-		// 	let arenaOption = document.createElement(option);
-		// 	arenaOption.innerHTML = arenaName;
-		// 	arenaOption.value = arenaName;
-		// 	arenaSelect.appendChild(arenaOption);
-		// }
+		// arenaStorage[arenaStorage.idCounter] = this.arenaArray;
+
+		localStorage.setItem("arenaStorage", JSON.stringify(arenaStorage));
 	}
 
-	removeArena() {}
+	removeArena(arena_delete) {
+		//Hämtar arenaStorage från localStorage, tar bort eventet med id:et som användaren klickade på,
+		//skriver över arenaStorage i localStorage.
+		let arenaStorage = JSON.parse(localStorage.getItem("arenaStorage"));
+		arenaStorage.splice(arenaStorage.indexOf(arena_delete), 1);
+		localStorage.setItem("arenaStorage", JSON.stringify(arenaStorage));
+	}
 
-	editArena() {}
+	editArena(arena_edit) {
+		let arenaStorage = JSON.parse(localStorage.getItem("arenaStorage"));
+		document.getElementById("arena-name").value = arena_edit;
+		//när admin trycker Ändra då vill vi spara detta nya värde
+
+		let saveFunction = () => {
+			let arenaName = document.getElementById("arena-name").value;
+			arenaStorage[arenaStorage.indexOf(arena_edit)] = arenaName;
+			localStorage.setItem("arenaStorage", JSON.stringify(arenaStorage));
+			saveBtn.removeEventListener("click", saveFunction);
+
+			document.getElementById("arena-submit-btn").style.display = "inline";
+			document.getElementById("arena-edit-btn").style.display = "none";
+			AdminUI.clearArenaForm();
+			AdminUI.clearArenaTable();
+			AdminUI.showArenas();
+		};
+
+		let saveBtn = document.getElementById("arena-edit-btn");
+		saveBtn.addEventListener("click", saveFunction);
+	}
 }
 /*--------------SLUT ARENA------------------*/
 
@@ -155,8 +184,31 @@ class AdminUI {
 	static showCategories() {
 		//metod som visar en lista/tabell kategorierna
 	}
-
+	/*------------ARENA---------------------------*/
 	static showArenas() {
 		//metod som visar en lista/tabell med arenorna
+		let arenaStorage = JSON.parse(localStorage.getItem("arenaStorage"));
+
+		for (let arena of arenaStorage) {
+			let arenaTable = document.getElementById("arena-table");
+			let arena_tr = document.createElement("tr");
+			arena_tr.innerHTML += `
+                <td>${arena}</td>
+                <td><span class='delete'>DELETE</span></td> 
+                <td><span class='edit'>EDIT</span></td>
+           		 `;
+			arenaTable.append(arena_tr);
+		}
+	}
+
+	static clearArenaForm() {
+		document.getElementById("arena-flex-form").reset();
+	}
+
+	static clearArenaTable() {
+		//Rensar tabellen med events.
+		let arenaTable = document.getElementById("arena-table");
+		arenaTable.innerHTML =
+			"<tr>" + arenaTable.firstElementChild.innerHTML + "</tr>";
 	}
 }
