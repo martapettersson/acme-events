@@ -24,13 +24,12 @@
 					<option value="klassiskt">Klassiskt</option>
 				</select>
 				<label>Arena</label>
-				<select id="arena-select" name="" id="">
+				<select id="arena-select">
 					<option value="-" selected>Välj en arena</option>
 					<option value="globen">Globen</option>
 					<option value="tele2arena">Tele2 arena</option>
 					<option value="friendsarena">Friends arena</option>
 					<option value="annexet">Annexet</option>
-					<option value=""></option>
 				</select>
 
 				<button id="event-submit-btn" type="button">Lägg till event</button>
@@ -51,7 +50,26 @@
 			</table>
 		</div>
 
-		<div></div>
+		<div id="arena-flex-container">
+			<h2>Redigera Arena</h2>
+			<form id="arena-flex-form">
+				<label>Arena</label>
+				<input id="arena-name" type="text" />
+
+				<button id="arena-submit-btn" type="button">Lägg till arena</button>
+				<button id="arena-edit-btn" type="button">Ändra arena</button>
+			</form>
+
+			<table>
+				<tbody id="arena-table">
+					<tr>
+						<th>Arena</th>
+						<th>DELETE</th>
+						<th>EDIT</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<div></div>
 		<script src="js/AdminClasses.js"></script>
 		<script src="js/admin.js"></script>

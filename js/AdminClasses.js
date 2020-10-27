@@ -6,16 +6,32 @@ class Event {
 		this.arena = arena;
 	}
 }
-
+/*--------------ARENA------------------*/
 class Arena {
 	constructor() {
-		this.arenaArray = ["Globen", "Tele2 Arena", "Friend's arena", "Annexet"];
+		this.arenaArray = [];
 	}
 
-	addArena() {}
+	addArena() {
+		let arenaName = document.getElementById("arena-name").value;
+		this.arenaArray.push(arenaName);
+
+		// //sen ska man få tag i Arena Select i admingränssnitt och lägga till nytt option
+		// let arenaSelect = document.getElementById("arena-select");
+
+		// for (arena of this.arenaArray) {
+		// 	let arenaOption = document.createElement(option);
+		// 	arenaOption.innerHTML = arenaName;
+		// 	arenaOption.value = arenaName;
+		// 	arenaSelect.appendChild(arenaOption);
+		// }
+	}
 
 	removeArena() {}
+
+	editArena() {}
 }
+/*--------------SLUT ARENA------------------*/
 
 class Category {
 	constructor() {

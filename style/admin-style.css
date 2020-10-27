@@ -16,3 +16,24 @@
 #event-edit-btn {
 	display: none;
 }
+
+/* ----------ARENA------------- */
+
+#arena-flex-container {
+	width: 33%;
+	display: flex;
+	flex-direction: column;
+}
+
+#arena-flex-form {
+	display: flex;
+	flex-direction: column;
+}
+
+#arena-table {
+	width: 33%;
+}
+
+#arena-edit-btn {
+	display: none;
+}
