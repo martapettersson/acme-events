@@ -11,21 +11,25 @@ class UI {
 	}
 
 	static displayEvents() {
-		let keys = Object.keys(localStorage);
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		let keys = Object.keys(eventStorage);
 		for (let key of keys) {
-			let data = JSON.parse(localStorage.getItem(key));
-			let event = document.createElement("a");
-			event.classList.add("event-a");
-			event.setAttribute("href", "home.html");
+			if (key !== "idCounter") {
+				let data = eventStorage[key];
+				console.log(data);
+				let event = document.createElement("a");
+				event.classList.add("event-a");
+				event.setAttribute("href", "home.html");
 
-			event.innerHTML = `
-        <p>${data.category}</p>
-        <h3>${data.artistName}</h3>
-        <span>${data.date}</span>
-        <span>${data.arena}</span>
-      `;
+				event.innerHTML = `
+				<p>${data.category}</p>
+				<h3>${data.artistName}</h3>
+				<span>${data.date}</span>
+				<span>${data.arena}</span>
+				`;
 
-			contentDiv.append(event);
+				contentDiv.append(event);
+			}
 		}
 	}
 
