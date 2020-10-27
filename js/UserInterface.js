@@ -1,5 +1,4 @@
 const contentDiv = document.getElementById("divContent");
-
 class UI {
 	//statisk klass som uppdaterar allt som visas på skärmen
 	static displayHeadline() {
@@ -11,33 +10,32 @@ class UI {
 	}
 
 	static displayEvents() {
-		//Lägg eventuellt till någon som kollar om 'eventStorage finns'
 		//den kanske bara ska få ett objekt som den skriver ut?
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
-		//beroende på parameter i funktionen sorterar den eller filtrerar den.
-		//Här kan man sortera datum.
+		delete eventStorage.idCounter;
+		let sortedArray = UI.sortEventDates(eventStorage);
 		let keys = Object.keys(eventStorage);
-		for (let key of keys) {
-			if (key !== "idCounter") {
-				let data = eventStorage[key];
-				let event = document.createElement("a");
-				event.className = "event-a all " + data.category; //här kan man lägga till category
-				event.setAttribute("href", "home.html");
+		for (let array of sortedArray) {
+			let data = array[1];
+			let event = document.createElement("a");
+			event.className = "event-a all " + data.category;
+			event.setAttribute("href", "home.html");
 
-				event.innerHTML = `
+			event.innerHTML = `
 				<p>${data.category}</p>
 				<h3>${data.artistName}</h3>
 				<span>${data.date}</span>
 				<span>${data.arena}</span>
 				`;
 
-				contentDiv.append(event);
-			}
+			contentDiv.append(event);
 		}
 	}
 
+	//Skapa funktion för att kolla om kategorin är vald eller inte? när man kör displayEvents?
+
 	static displaySortMenu() {
-		//Skapar en select-meny för att sortera på kategori
+		//Skapar en select-meny för att välja kategori att filtrera fram
 		let categories = JSON.parse(localStorage.getItem("categories"));
 		let sortDiv = document.createElement("div");
 		let select = document.createElement("select");
@@ -47,7 +45,7 @@ class UI {
 			select.innerHTML += `<option value="${category}">${category}</option>`;
 		}
 		sortDiv.append(select);
-
+		//Skapar knappen som filtrerar
 		let categoryButton = document.createElement("button");
 		categoryButton.textContent = "Filtrera";
 		categoryButton.setAttribute("type", "button");
@@ -56,18 +54,18 @@ class UI {
 			let category = document.getElementById("category-select").value;
 			UI.filterEvents(category);
 		});
-
 		sortDiv.append(categoryButton);
 
 		contentDiv.append(sortDiv);
-		//Skapa funktion som skapar knappar eller något som gör att man kan sortera.
-		//Man kör display
-		//Något som man kan toogla senaste events (default) eller äldsta
-		//Använda displayEvents-funktionen för att re-render?
 	}
 
-	static sortEventDates() {
-		//Här kan man ta bort diven för events innan sidan renderas.
+	static sortEventDates(eventStorage) {
+		//sprid ut eller loopa igenom.
+
+		let entryArray = Object.entries(eventStorage);
+		return entryArray.sort((a, b) => {
+			return a[1].date.split("-").join("") - b[1].date.split("-").join("");
+		});
 	}
 
 	static filterEvents(category) {
