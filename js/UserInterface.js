@@ -14,6 +14,7 @@ class UI {
 		//Lägg eventuellt till någon som kollar om 'eventStorage finns'
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
 		//beroende på parameter i funktionen sorterar den eller filtrerar den.
+		//Här kan man sortera datum.
 		let keys = Object.keys(eventStorage);
 		for (let key of keys) {
 			if (key !== "idCounter") {
@@ -41,7 +42,9 @@ class UI {
 		//Använda displayEvents-funktionen för att re-render?
 	}
 
-	static sortEventDates() {}
+	static sortEventDates() {
+		//Här kan man ta bort
+	}
 
 	static filterEvents() {}
 
