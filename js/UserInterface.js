@@ -12,6 +12,7 @@ class UI {
 
 	static displayEvents() {
 		//Lägg eventuellt till någon som kollar om 'eventStorage finns'
+		//den kanske bara ska få ett objekt som den skriver ut?
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
 		//beroende på parameter i funktionen sorterar den eller filtrerar den.
 		//Här kan man sortera datum.
@@ -20,7 +21,7 @@ class UI {
 			if (key !== "idCounter") {
 				let data = eventStorage[key];
 				let event = document.createElement("a");
-				event.classList.add("event-a");
+				event.className = "event-a all " + data.category; //här kan man lägga till category
 				event.setAttribute("href", "home.html");
 
 				event.innerHTML = `
@@ -35,18 +36,53 @@ class UI {
 		}
 	}
 
-	static displaySortButton() {
+	static displaySortMenu() {
+		//Skapar en select-meny för att sortera på kategori
+		let categories = JSON.parse(localStorage.getItem("categories"));
+		let sortDiv = document.createElement("div");
+		let select = document.createElement("select");
+		select.id = "category-select";
+		select.innerHTML = "<option value='all'>Visa alla</option>";
+		for (let category of categories) {
+			select.innerHTML += `<option value="${category}">${category}</option>`;
+		}
+		sortDiv.append(select);
+
+		let categoryButton = document.createElement("button");
+		categoryButton.textContent = "Filtrera";
+		categoryButton.setAttribute("type", "button");
+
+		categoryButton.addEventListener("click", (e) => {
+			let category = document.getElementById("category-select").value;
+			UI.filterEvents(category);
+		});
+
+		sortDiv.append(categoryButton);
+
+		contentDiv.append(sortDiv);
 		//Skapa funktion som skapar knappar eller något som gör att man kan sortera.
-		//Hur ska man sortera events? sort-funktion på alla events. separat funktion
+		//Man kör display
 		//Något som man kan toogla senaste events (default) eller äldsta
 		//Använda displayEvents-funktionen för att re-render?
 	}
 
 	static sortEventDates() {
-		//Här kan man ta bort
+		//Här kan man ta bort diven för events innan sidan renderas.
 	}
 
-	static filterEvents() {}
+	static filterEvents(category) {
+		//loopar igenom alla a taggar-med klassen event-a
+		let events = document.querySelectorAll("a.event-a");
+		for (let event of events) {
+			if (!event.classList.contains(category)) {
+				event.style.display = "none";
+			} else {
+				event.style.display = "block";
+			}
+		}
+		//lägg till display: none på det klasser som inte är markerade
+		//bör finnas ett alternativ som som visar alla.
+	}
 
 	static showFrontPage() {
 		let divContent = document.getElementById("divContent");
