@@ -65,12 +65,50 @@ class Arena {
 
 class Category {
 	constructor() {
-		this.categoryArray = ["Jazz", "Schlager", "Rock", "Klassiskt", "Pop"];
+		if (localStorage.getItem("categoryStorage") === null) {
+			localStorage.setItem(
+				"categoryStorage",
+				JSON.stringify(["Jazz", "Rock"])
+			);
+		}
 	}
 
-	addCategory() {}
+	addCategory() {
+		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
+		let categoryName = document.getElementById("category-name").value;
 
-	removeCategory() {}
+		categoryStorage.push(categoryName);
+
+
+		localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
+	}
+
+	removeCategory(category_delete) {
+		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
+		categoryStorage.splice(categoryStorage.indexOf(category_delete), 1);
+		localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
+	}
+	editCategory(category_edit) {
+		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
+		document.getElementById("category-name").value = category_edit;
+		//när admin trycker Ändra då vill vi spara detta nya värde
+
+		let saveFunction = () => {
+			let categoryName = document.getElementById("category-name").value;
+			categoryStorage[categoryStorage.indexOf(category_edit)] = categoryName;
+			localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
+			saveBtn.removeEventListener("click", saveFunction);
+
+			document.getElementById("category-submit-btn").style.display = "inline";
+			document.getElementById("category-edit-btn").style.display = "none";
+			AdminUI.clearCategoryForm();
+			AdminUI.clearCategoryTable();
+			AdminUI.showCategory();
+		};
+
+		let saveBtn = document.getElementById("category-edit-btn");
+		saveBtn.addEventListener("click", saveFunction);
+	}
 }
 
 class EventControl {
@@ -219,8 +257,32 @@ class AdminUI {
 		document.getElementById("event-flex-form").reset();
 	}
 
-	static showCategories() {
+	/*------------category---------------------------*/
+	static showCategory() {
 		//metod som visar en lista/tabell kategorierna
+		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
+
+		for (let category of categoryStorage) {
+			let categoryTable = document.getElementById("category-table");
+			let category_tr = document.createElement("tr");
+			category_tr.innerHTML += `
+                <td>${category}</td>
+                <td><span class='delete'>DELETE</span></td> 
+                <td><span class='edit'>EDIT</span></td>
+           		 `;
+			categoryTable.append(category_tr);
+		}
+	}
+
+	static clearCategoryForm() {
+		document.getElementById("category-flex-form").reset();
+	}
+
+	static clearCategoryTable() {
+		//Rensar tabellen med events.
+		let categoryTable = document.getElementById("category-table");
+		categoryTable.innerHTML =
+			"<tr>" + categoryTable.firstElementChild.innerHTML + "</tr>";
 	}
 
 	/*------------ARENA---------------------------*/

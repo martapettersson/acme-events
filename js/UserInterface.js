@@ -295,5 +295,31 @@ class UI {
 			"Alla besökare måste ha biljett" +
 			"<br />" +
 			"Arrangör: Live Nation";
+
+			GuestbookUI.displayGuestbook();
+			GuestbookUI.displayGuestbookPosts();
+			const guestbook = new GuestbookControler()
+
+			
+			document.getElementById("PostsSubmitBtn").addEventListener("click", (e) => {
+				guestbook.createPosts();
+				GuestbookUI.clearGuestbookForm();
+				GuestbookUI.clearGuestbookTable();
+				GuestbookUI.displayGuestbookPosts();
+			  });
+			
+			  document.getElementById("guestbookTbody").addEventListener("click", (e) => {
+    
+				if (e.target.classList.contains("delete")) {
+				  let id = e.target.parentElement.parentElement.id;
+				  guestbook.removeGuestbookPost(id);
+				  GuestbookUI.clearGuestbookTable();
+				  GuestbookUI.displayGuestbookPosts();
+				  
+				} 
+			  });
+			
+			
+
 	}
 }

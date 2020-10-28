@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (e) {
 	UI.showFrontPage();
+	
 
 	let homeBtn = document.getElementById("homeBtn");
 	homeBtn.addEventListener("click", function (e) {
@@ -25,4 +26,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		UI.displaySortMenu();
 		UI.displayEvents();
 	});
+	
 });
