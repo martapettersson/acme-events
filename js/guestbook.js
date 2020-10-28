@@ -1,28 +1,3 @@
-const contentDiv = document.getElementById("divContent");
-document.addEventListener("DOMContentLoaded", function (e) {
-  const guestbook = new GuestbookControler();
-  GuestbookUI.displayGuestbook();
-  GuestbookUI.displayGuestbookPosts();
-
-  document.getElementById("PostsSubmitBtn").addEventListener("click", (e) => {
-    guestbook.createPosts();
-    GuestbookUI.clearGuestbookForm();
-    GuestbookUI.clearGuestbookTable();
-    GuestbookUI.displayGuestbookPosts();
-  });
-
-  document.getElementById("guestbookTbody").addEventListener("click", (e) => {
-    
-    if (e.target.classList.contains("delete")) {
-      let id = e.target.parentElement.parentElement.id;
-      guestbook.removeGuestbookPost(id);
-      GuestbookUI.clearGuestbookTable();
-      GuestbookUI.displayGuestbookPosts();
-      
-    } 
-  });
-});
-
 class Guestbook {
   constructor(guestbookName, guestbookPosts) {
     this.guestbookName = guestbookName;
