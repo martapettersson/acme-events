@@ -145,9 +145,25 @@ class EventControl {
 class AdminUI {
 	//Kontrollerar vad som visar på skärmen i admingränssnittet
 
-	createSelectMenus() {
-		let categorySelect = document.getElementsById("category-select");
-		let arenaSelect = document.getElementsById("arena-select");
+	static createSelectMenus() {
+		//skapar options för arena och categories select-menyer
+
+		//hämta data från localStorage för kategorier.
+		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
+		let categorySelect = document.getElementById("category-select");
+
+		//loopa igenom varje array och sätt värdet som option.
+		for (let category of categories) {
+			categorySelect.innerHTML += `<option value="${category}">${category}</option>`;
+		}
+
+		//hämta data från localStorage för select.
+		let arenas = JSON.parse(localStorage.getItem("arenaStorage"));
+		let arenaSelect = document.getElementById("arena-select");
+
+		for (let arena of arenas) {
+			arenaSelect.innerHTML += `<option value="${arena}">${arena}</option>`;
+		}
 	}
 
 	static showEvents() {

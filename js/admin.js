@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	// Metod som skapar / lägger till saker i våra Selects
 	// denna körs även när man redigerar Arena eller Kategori
 	// om man redigerar Arena eller Kategori ska vi köra showEvents
+	AdminUI.createSelectMenus();
 	AdminUI.showEvents();
 	AdminUI.showArenas();
 

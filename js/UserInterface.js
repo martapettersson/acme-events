@@ -34,7 +34,7 @@ class UI {
 
 	static displaySortMenu() {
 		//Skapar en select-meny för att välja kategori att filtrera fram
-		let categories = JSON.parse(localStorage.getItem("categories"));
+		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let sortDiv = document.createElement("div");
 		let select = document.createElement("select");
 		select.id = "category-select";
