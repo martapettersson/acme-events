@@ -116,11 +116,6 @@ class EventControl {
 			localStorage.setItem("eventStorage", JSON.stringify({ idCounter: 0 }));
 		}
 	}
-
-	test() {
-		console.log("hejhEJ");
-	}
-
 	createEvent() {
 		//skapa ett nytt eventobjekt. Hämtar eventStorage från localstorage och lägger in det nya objektet. Lägger till ++ på id-counter
 		//och uppdaterar eventStorage i localStorage
