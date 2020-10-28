@@ -134,12 +134,12 @@ a {
 }
 
 .event-a:hover {
-	background-color: f16275;
-	color: 4e3436;
+	background-color: #f16275;
+	color: #4e3436;
 }
 
 .event-headline {
-	border-bottom: 1px solid 4e3436;
+	border-bottom: 1px solid #4e3436;
 	margin: 0 0 15px;
 	text-align: center;
 }

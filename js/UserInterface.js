@@ -17,8 +17,9 @@ class UI {
 		for (let array of sortedArray) {
 			let data = array[1];
 			let event = document.createElement("a");
+			event.addEventListener("click", UI.showEventDetailed);
 			event.className = "event-a all " + data.category;
-			event.setAttribute("href", "home.html");
+			event.setAttribute("href", "#");
 
 			event.innerHTML = `
 				<p>${data.category}</p>
