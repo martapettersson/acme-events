@@ -1,5 +1,130 @@
+@font-face {
+	font-family: myFont;
+	src: url(/Noto_Sans_JP/NotoSansJP-Regular.otf);
+}
+
+.flex-container {
+	display: flex;
+	flex-flow: wrap column;
+	min-height: 100vh;
+	max-width: 1020px;
+	margin: auto;
+	box-sizing: border-box;
+}
+
+.flex-container > * {
+	padding: 1em;
+}
+
+button {
+	font-family: myFont;
+	background-color: #f16275;
+	color: black;
+	font-size: 1em;
+	text-transform: uppercase;
+	border: none;
+}
+
+button:hover {
+	opacity: 0.2;
+}
+
+.page-header {
+	background-color: #f6faf9;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.page-header img {
+	display: flex;
+	width: 7em;
+}
+
+.page-header nav {
+	display: flex;
+}
+
+.page-header ul {
+	display: flex;
+	width: 100%;
+	margin: auto;
+	list-style-type: none;
+	justify-content: flex-end;
+}
+.page-header ul li {
+	padding-right: 1em;
+}
+
+#divContent {
+	border: 1em solid #f7e334;
+	font-family: myFont;
+	background-color: #f6faf9;
+	min-height: 450px;
+	display: flex;
+	flex-flow: wrap column;
+	justify-content: space-between;
+}
+
+#divContent div {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.pic,
+.text {
+	margin: 1em;
+}
+
+#divContent h1 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#divContent img {
+	float: right;
+	max-width: 510px;
+}
+
+.frontDiv:hover {
+	opacity: 0.2;
+}
+
+.page-footer {
+	font-family: myFont;
+	background-color: #f6faf9;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.page-footer ul {
+	display: flex;
+	list-style-type: none;
+	margin-bottom: 1em;
+	width: 100%;
+	margin: auto;
+	justify-content: center;
+}
+.page-footer ul li {
+	margin-right: 2em;
+}
+.page-footer button {
+	display: flex;
+	align-self: flex-end;
+}
+/*
+#4e3436 - WOODY BROWN
+#f7e334 - GOLDEN DREAM
+#f16275 - FROLY
+#eec584 - TACAO
+#f6faf9 - AQUA HAZE
+
+https://fonts.google.com/specimen/Noto+Sans+JP
+*/
+
 a {
-	color: blue;
+	color: 4e3436;
 	text-decoration: none; /* no underline */
 }
 
@@ -9,94 +134,12 @@ a {
 }
 
 .event-a:hover {
-	background-color: red;
-	color: green;
+	background-color: f16275;
+	color: 4e3436;
 }
 
 .event-headline {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid 4e3436;
 	margin: 0 0 15px;
 	text-align: center;
-}
-img {
-	float: right;
-}
-.flex-container {
-	display: flex;
-	flex-flow: wrap column;
-	min-height: 100vh;
-	max-width: 1020px;
-	margin: auto;
-}
-
-.flex-container > * {
-	flex: 1 100%;
-	padding: 20px;
-}
-
-.page-header {
-	background: #9984d4;
-}
-
-.page-header nav {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.page-header ul {
-	display: flex;
-	order: 1;
-	width: 100%;
-	margin: auto;
-	justify-content: center;
-	list-style-type: none;
-}
-.page-header ul li {
-	padding-right: 15px;
-}
-.page-header .login {
-	font-family: "Times New Roman", Times, serif;
-	padding: 5px 18px;
-	border: 1px solid;
-	border-radius: 5px;
-}
-
-#divContent {
-	background: #bbafc9;
-	min-height: 450px;
-	display: flex;
-	flex-flow: wrap column;
-	flex-grow: 1;
-	justify-content: space-around;
-	padding: 0px;
-}
-
-#divContent img {
-	max-width: 510px;
-}
-
-#divContent span {
-	max-width: 480px;
-	margin-top: 15px;
-	font-size: 16px;
-}
-
-.page-footer {
-	background: #9984d4;
-	display: flex;
-	flex-direction: column-reverse;
-}
-
-.page-footer ul {
-	display: flex;
-	list-style-type: none;
-	margin-bottom: 5px;
-	width: 100%;
-	margin: auto;
-	justify-content: center;
-}
-.page-footer ul li {
-	margin-right: 20px;
 }

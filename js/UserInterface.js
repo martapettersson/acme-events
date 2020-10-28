@@ -80,39 +80,38 @@ class UI {
 	static showFrontPage() {
 		let divContent = document.getElementById("divContent");
 		divContent.innerHTML = "";
-
-		let frontpageContent_1 = document.createElement("div");
-		divContent.appendChild(frontpageContent_1);
-		let frontpageImg_1 = document.createElement("img");
-		let frontpageHeading_1 = document.createElement("h2");
-		let frontpageText_1 = document.createElement("p");
-		frontpageContent_1.appendChild(frontpageImg_1);
-		frontpageContent_1.appendChild(frontpageHeading_1);
-		frontpageContent_1.appendChild(frontpageText_1);
-		frontpageImg_1.src = "img/kiss.jpg";
-		frontpageHeading_1.innerHTML =
-			"KISS: End Of The Road World Tour + support Steel Panther";
-		frontpageText_1.innerHTML =
-			"KISS konserten flyttats fram till 23 juni 2021." +
-			"<br />" +
-			"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
-			"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
-
-		let frontpageContent_2 = document.createElement("div");
-		divContent.appendChild(frontpageContent_2);
-		let frontpageImg_2 = document.createElement("img");
-		let frontpageHeading_2 = document.createElement("h2");
-		let frontpageText_2 = document.createElement("p");
-		frontpageContent_2.appendChild(frontpageImg_2);
-		frontpageContent_2.appendChild(frontpageHeading_2);
-		frontpageContent_2.appendChild(frontpageText_2);
-		frontpageImg_2.src = "img/loreen.jpg";
-		frontpageHeading_2.innerHTML = "Loreen:";
-		frontpageText_2.innerHTML =
-			"Loreen konserten flyttats fram till 28 juni 2021." +
-			"<br />" +
-			"Vi följer noga utvecklingen och sett till rådande situation kommer konserten inte att kunna genomföras som planerat" +
-			"Håll i din biljett - den kommer fortfarande att gälla för det nya datumet. Kontakta Ticketmaster för eventuella biljettfrågor!";
+		divContent.innerHTML = `
+		<div class="frontDiv">
+			<div class="pic">
+				<img src="img/kiss.jpg" />
+			</div>
+			<div class="text">
+				<h1>KISS: End Of The Road World Tour + support Steel Panther</h1>
+				<p>
+					KISS konserten flyttats fram till 23 juni 2021. Vi följer noga
+					utvecklingen och sett till rådande situation kommer konserten inte att
+					kunna genomföras som planerat. Håll i din biljett - den kommer fortfarande
+					att gälla för det nya datumet. Kontakta Ticketmaster för eventuella
+					biljettfrågor!
+				</p>
+			</div>
+		</div>
+		<div class="frontDiv">
+			<div class="pic">
+				<img src="img/loreen.jpg" />
+			</div>
+			<div class="text">
+				<h1>Loreen:</h1>
+				<p>
+					Loreen konserten flyttats fram till 28 juni 2021. Vi följer noga
+					utvecklingen och sett till rådande situation kommer konserten inte att
+					kunna genomföras som planerat. Håll i din biljett - den kommer fortfarande
+					att gälla för det nya datumet. Kontakta Ticketmaster för eventuella
+					biljettfrågor!
+				</p>
+			</div>
+		</div>	
+		`;
 	}
 
 	static showAbout() {

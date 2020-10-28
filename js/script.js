@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		UI.showAbout();
 	});
 
-	let detailBtn = document.getElementById("detailBtn");
-	detailBtn.addEventListener("click", function (e) {
-		UI.showEventDetailed();
+	let divContent = document.getElementById("divContent");
+	divContent.addEventListener("click", function (e) {
+		if (e.target.parentElement.parentElement.classList.contains("frontDiv")) {
+			UI.showEventDetailed();
+		}
 	});
 	let eventBtn = document.getElementById("eventBtn");
 	eventBtn.addEventListener("click", function (e) {
