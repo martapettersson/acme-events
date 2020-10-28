@@ -38,7 +38,7 @@ class Arena {
 		localStorage.setItem("arenaStorage", JSON.stringify(arenaStorage));
 	}
 
-	editArena(arena_edit) {
+	editArena(arena_edit, obj) {
 		let arenaStorage = JSON.parse(localStorage.getItem("arenaStorage"));
 		document.getElementById("arena-name").value = arena_edit;
 		//när admin trycker Ändra då vill vi spara detta nya värde
@@ -54,6 +54,7 @@ class Arena {
 			AdminUI.clearArenaForm();
 			AdminUI.clearArenaTable();
 			AdminUI.showArenas();
+			obj.updateEvents("arena", [arena_edit, arenaName]);
 		};
 
 		let saveBtn = document.getElementById("arena-edit-btn");
@@ -79,6 +80,10 @@ class EventControl {
 		if (localStorage.getItem("eventStorage") === null) {
 			localStorage.setItem("eventStorage", JSON.stringify({ idCounter: 0 }));
 		}
+	}
+
+	test() {
+		console.log("hejhEJ");
 	}
 
 	createEvent() {
@@ -139,6 +144,18 @@ class EventControl {
 
 		let saveBtn = document.getElementById("event-edit-btn");
 		saveBtn.addEventListener("click", saveFunction);
+	}
+
+	updateEvents(obj, valueArray) {
+		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
+		delete eventStorage.idCounter;
+		let keys = Object.keys(eventStorage);
+		for (let key of keys) {
+			if (eventStorage[key][obj] === valueArray[0]) {
+				eventStorage[key][obj] = valueArray[1];
+			}
+		}
+		localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
 	}
 }
 

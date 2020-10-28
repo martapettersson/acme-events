@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", (e) => {
+	const eventcontrol = new EventControl();
 	const category = new Category();
 	const arena = new Arena();
-	const eventcontrol = new EventControl();
+	console.log(eventcontrol);
+
 	// Metod som skapar / lägger till saker i våra Selects
 	// denna körs även när man redigerar Arena eller Kategori
 	// om man redigerar Arena eller Kategori ska vi köra showEvents
@@ -43,7 +45,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			let arena_delete =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
 			arena.removeArena(arena_delete);
-
+			eventcontrol.updateEvents("arena", [arena_delete, ""]);
 			AdminUI.clearArenaTable();
 			AdminUI.showArenas();
 
@@ -51,8 +53,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		} else if (e.target.classList.contains("edit")) {
 			let arena_edit =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
-			arena.editArena(arena_edit);
-			//gör om detta till metod?
+			console.log(eventcontrol);
+			arena.editArena(arena_edit, eventcontrol);
 			document.getElementById("arena-submit-btn").style.display = "none";
 			document.getElementById("arena-edit-btn").style.display = "inline";
 		}
