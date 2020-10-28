@@ -296,9 +296,10 @@ class UI {
 			"<br />" +
 			"Arrangör: Live Nation";
 
+			const guestbook = new GuestbookControler()
 			GuestbookUI.displayGuestbook();
 			GuestbookUI.displayGuestbookPosts();
-			const guestbook = new GuestbookControler()
+			
 
 			
 			document.getElementById("PostsSubmitBtn").addEventListener("click", (e) => {
