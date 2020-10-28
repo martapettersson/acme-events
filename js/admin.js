@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	AdminUI.createSelectMenus();
 	AdminUI.showEvents();
 	AdminUI.showArenas();
+	AdminUI.showCategory();
+	
 
 	/*---------------EVENT-------------*/
 	document.getElementById("event-table").addEventListener("click", (e) => {
@@ -66,4 +68,34 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		AdminUI.showArenas();
 	});
 	/*---------------SLUT PÅ ARENA-------------*/
+	/*---------------Category-------------*/
+	document.getElementById("category-table").addEventListener("click", (e) => {
+		//Sätter en eventlistener på tabellen i admingränstsnittet. När man trycker på delete körs metoderna nedan
+		//och eventet man tryckte på tas bort från localStorage. Sedan återställs tabellen och allt som finns i localstorage visas.
+		if (e.target.classList.contains("delete")) {
+			let category_delete =
+				e.target.parentElement.parentElement.firstElementChild.innerHTML;
+			category.removeCategory(category_delete);
+
+			AdminUI.clearCategoryTable();
+			AdminUI.showCategory();
+
+			//om man trycker på edit körs koden nedan
+		} else if (e.target.classList.contains("edit")) {
+			let category_edit =
+				e.target.parentElement.parentElement.firstElementChild.innerHTML;
+			category.editCategory(category_edit);
+			//gör om detta till metod?
+			document.getElementById("category-submit-btn").style.display = "none";
+			document.getElementById("category-edit-btn").style.display = "inline";
+		}
+	});
+
+	document.getElementById("category-submit-btn").addEventListener("click", (e) => {
+		//Anger vilka metoder som körs när man trycker på submitknappen i admin-gränssnittet
+		category.addCategory();
+		AdminUI.clearCategoryForm();
+		AdminUI.clearCategoryTable();
+		AdminUI.showCategory();
+	});
 });
