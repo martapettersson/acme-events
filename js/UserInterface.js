@@ -14,7 +14,6 @@ class UI {
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
 		delete eventStorage.idCounter;
 		let sortedArray = UI.sortEventDates(eventStorage);
-		let keys = Object.keys(eventStorage);
 		for (let array of sortedArray) {
 			let data = array[1];
 			let event = document.createElement("a");
@@ -31,8 +30,6 @@ class UI {
 			contentDiv.append(event);
 		}
 	}
-
-	//Skapa funktion för att kolla om kategorin är vald eller inte? när man kör displayEvents?
 
 	static displaySortMenu() {
 		//Skapar en select-meny för att välja kategori att filtrera fram
@@ -69,7 +66,7 @@ class UI {
 	}
 
 	static filterEvents(category) {
-		//loopar igenom alla a taggar-med klassen event-a
+		//loopar igenom alla a-taggar med klassen event-a
 		let events = document.querySelectorAll("a.event-a");
 		for (let event of events) {
 			if (!event.classList.contains(category)) {
@@ -78,8 +75,6 @@ class UI {
 				event.style.display = "block";
 			}
 		}
-		//lägg till display: none på det klasser som inte är markerade
-		//bör finnas ett alternativ som som visar alla.
 	}
 
 	static showFrontPage() {
