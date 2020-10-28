@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	AdminUI.showEvents();
 	AdminUI.showArenas();
 	AdminUI.showCategory();
-	
 
 	/*---------------EVENT-------------*/
 	document.getElementById("event-table").addEventListener("click", (e) => {
@@ -55,7 +54,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		} else if (e.target.classList.contains("edit")) {
 			let arena_edit =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
-			console.log(eventcontrol);
 			arena.editArena(arena_edit, eventcontrol);
 			document.getElementById("arena-submit-btn").style.display = "none";
 			document.getElementById("arena-edit-btn").style.display = "inline";
@@ -78,7 +76,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			let category_delete =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
 			category.removeCategory(category_delete);
-
+			eventcontrol.updateEvents("category", [category_delete, ""]);
 			AdminUI.clearCategoryTable();
 			AdminUI.showCategory();
 
@@ -86,18 +84,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		} else if (e.target.classList.contains("edit")) {
 			let category_edit =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
-			category.editCategory(category_edit);
+			category.editCategory(category_edit, eventcontrol);
 			//gör om detta till metod?
 			document.getElementById("category-submit-btn").style.display = "none";
 			document.getElementById("category-edit-btn").style.display = "inline";
 		}
 	});
 
-	document.getElementById("category-submit-btn").addEventListener("click", (e) => {
-		//Anger vilka metoder som körs när man trycker på submitknappen i admin-gränssnittet
-		category.addCategory();
-		AdminUI.clearCategoryForm();
-		AdminUI.clearCategoryTable();
-		AdminUI.showCategory();
-	});
+	document
+		.getElementById("category-submit-btn")
+		.addEventListener("click", (e) => {
+			//Anger vilka metoder som körs när man trycker på submitknappen i admin-gränssnittet
+			category.addCategory();
+			AdminUI.clearCategoryForm();
+			AdminUI.clearCategoryTable();
+			AdminUI.showCategory();
+		});
 });

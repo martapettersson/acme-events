@@ -66,10 +66,7 @@ class Arena {
 class Category {
 	constructor() {
 		if (localStorage.getItem("categoryStorage") === null) {
-			localStorage.setItem(
-				"categoryStorage",
-				JSON.stringify(["Jazz", "Rock"])
-			);
+			localStorage.setItem("categoryStorage", JSON.stringify(["Jazz", "Rock"]));
 		}
 	}
 
@@ -79,7 +76,6 @@ class Category {
 
 		categoryStorage.push(categoryName);
 
-
 		localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
 	}
 
@@ -88,7 +84,7 @@ class Category {
 		categoryStorage.splice(categoryStorage.indexOf(category_delete), 1);
 		localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
 	}
-	editCategory(category_edit) {
+	editCategory(category_edit, obj) {
 		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
 		document.getElementById("category-name").value = category_edit;
 		//när admin trycker Ändra då vill vi spara detta nya värde
@@ -104,6 +100,7 @@ class Category {
 			AdminUI.clearCategoryForm();
 			AdminUI.clearCategoryTable();
 			AdminUI.showCategory();
+			obj.updateEvents("category", [category_edit, categoryName]);
 		};
 
 		let saveBtn = document.getElementById("category-edit-btn");
