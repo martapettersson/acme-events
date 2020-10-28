@@ -9,8 +9,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
     GuestbookUI.clearGuestbookForm();
     GuestbookUI.clearGuestbookTable();
     GuestbookUI.displayGuestbookPosts();
+  });
+
+  document.getElementById("guestbookTbody").addEventListener("click", (e) => {
     
-    
+    if (e.target.classList.contains("delete")) {
+      let id = e.target.parentElement.parentElement.id;
+      guestbook.removeGuestbookPost(id);
+      GuestbookUI.clearGuestbookTable();
+      GuestbookUI.displayGuestbookPosts();
+      
+    } 
   });
 });
 
@@ -41,15 +50,19 @@ class GuestbookControler {
     guestbookStorage.idCounter++;
     localStorage.setItem("guestbookStorage", JSON.stringify(guestbookStorage));
   }
-  
+  removeGuestbookPost(id) {
+    let guestbookStorage = JSON.parse(localStorage.getItem("guestbookStorage"));
+    delete guestbookStorage[id];
+    localStorage.setItem("guestbookStorage", JSON.stringify(guestbookStorage));
+  }
 }
 class GuestbookUI {
   static displayGuestbook() {
     let divGuestbook = document.createElement("div");
     divGuestbook.setAttribute("id", "divGuestbook");
 
-    let guestbookForm = document.createElement("form")
-    guestbookForm.setAttribute("id", "guestbookForm")
+    let guestbookForm = document.createElement("form");
+    guestbookForm.setAttribute("id", "guestbookForm");
 
     let inputName = document.createElement("input");
     inputName.setAttribute("type", "text");
@@ -57,8 +70,8 @@ class GuestbookUI {
     inputName.setAttribute("placeholder", "Namn: ");
 
     let submitBtn = document.createElement("button");
-    submitBtn.setAttribute("type", "button")
-    submitBtn.innerHTML = "Submbit"
+    submitBtn.setAttribute("type", "button");
+    submitBtn.innerHTML = "Submbit";
     submitBtn.setAttribute("id", "PostsSubmitBtn");
 
     let commentBox = document.createElement("textarea");
@@ -75,52 +88,44 @@ class GuestbookUI {
     const guestbookPostDiv = document.createElement("div");
     guestbookPostDiv.setAttribute("id", "divPosts");
     const guestbookTable = document.createElement("table");
-    guestbookTable.setAttribute("id", "guestbookTable")
-    const guestbooktBody = document.createElement("tbody")
-    guestbooktBody.setAttribute("id", "guestbookTbody")
-    const guestbookTR = document.createElement("tr")
+    guestbookTable.setAttribute("id", "guestbookTable");
+    const guestbooktBody = document.createElement("tbody");
+    guestbooktBody.setAttribute("id", "guestbookTbody");
+    const guestbookTR = document.createElement("tr");
 
-    guestbooktBody.appendChild(guestbookTR)
-    guestbookTable.appendChild(guestbooktBody)
+    guestbooktBody.appendChild(guestbookTR);
+    guestbookTable.appendChild(guestbooktBody);
     guestbookPostDiv.appendChild(guestbookTable);
-    contentDiv.appendChild(guestbookPostDiv)
-
-
+    contentDiv.appendChild(guestbookPostDiv);
   }
 
   static displayGuestbookPosts() {
-
-    
-    
-
     let guestbookStorage = JSON.parse(localStorage.getItem("guestbookStorage"));
     let keys = Object.keys(guestbookStorage).sort();
 
     for (let key of keys) {
       if (key !== "idCounter") {
         let guestbookObject = guestbookStorage[key];
-        let table = document.getElementById("guestbookTbody")
-        let tr = document.createElement("tr")
-        tr.id= key;
+        let table = document.getElementById("guestbookTbody");
+        let tr = document.createElement("tr");
+        tr.id = key;
         tr.innerHTML += `
             <td>${guestbookObject.guestbookName}</td>
             <td>${guestbookObject.guestbookPosts}</td>
             <td><span class='delete'>DELETE</span><td/>
 			
         `;
-        
-            table.appendChild(tr)
+
+        table.appendChild(tr);
       }
-        
-        
     }
   }
   static clearGuestbookTable() {
     let postsTable = document.getElementById("guestbookTbody");
-    
-        postsTable.innerHTML =   
+
+    postsTable.innerHTML =
       "<tr>" + postsTable.firstElementChild.innerHTML + "</tr>";
-    }
+  }
 
   static clearGuestbookForm() {
     document.getElementById("guestbookForm").reset();
