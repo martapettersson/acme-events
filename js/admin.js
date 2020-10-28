@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	const eventcontrol = new EventControl();
 	const category = new Category();
 	const arena = new Arena();
-	console.log(eventcontrol);
 
 	// Metod som skapar / lägger till saker i våra Selects
 	// denna körs även när man redigerar Arena eller Kategori

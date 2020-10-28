@@ -186,6 +186,8 @@ class EventControl {
 			}
 		}
 		localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
+		AdminUI.clearTable()
+		AdminUI.showEvents()
 	}
 }
 
