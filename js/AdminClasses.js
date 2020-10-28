@@ -145,6 +145,11 @@ class EventControl {
 class AdminUI {
 	//Kontrollerar vad som visar på skärmen i admingränssnittet
 
+	createSelectMenus() {
+		let categorySelect = document.getElementsById("category-select");
+		let arenaSelect = document.getElementsById("arena-select");
+	}
+
 	static showEvents() {
 		//Går igenom alla events i localstorage och skriver ut dem i en tabell. Om key är idCounter hoppar den över
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
@@ -184,6 +189,7 @@ class AdminUI {
 	static showCategories() {
 		//metod som visar en lista/tabell kategorierna
 	}
+
 	/*------------ARENA---------------------------*/
 	static showArenas() {
 		//metod som visar en lista/tabell med arenorna
