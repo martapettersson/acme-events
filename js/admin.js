@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 	// Metod som skapar / lägger till saker i våra Selects
 	// denna körs även när man redigerar Arena eller Kategori
 	// om man redigerar Arena eller Kategori ska vi köra showEvents
+	AdminUI.createSelectMenus();
 	AdminUI.showEvents();
 	AdminUI.showArenas();
 
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		} else if (e.target.classList.contains("edit")) {
 			let id = e.target.parentElement.parentElement.id;
 			eventcontrol.editEventObject(id);
+			//gör om till metod.
 			document.getElementById("event-submit-btn").style.display = "none";
 			document.getElementById("event-edit-btn").style.display = "inline";
 		}
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			let arena_edit =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
 			arena.editArena(arena_edit);
+			//gör om detta till metod?
 			document.getElementById("arena-submit-btn").style.display = "none";
 			document.getElementById("arena-edit-btn").style.display = "inline";
 		}

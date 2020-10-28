@@ -1,5 +1,4 @@
 const contentDiv = document.getElementById("divContent");
-
 class UI {
 	//statisk klass som uppdaterar allt som visas på skärmen
 	static displayHeadline() {
@@ -11,24 +10,70 @@ class UI {
 	}
 
 	static displayEvents() {
+		//den kanske bara ska få ett objekt som den skriver ut?
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
-		let keys = Object.keys(eventStorage);
-		for (let key of keys) {
-			if (key !== "idCounter") {
-				let data = eventStorage[key];
-				console.log(data);
-				let event = document.createElement("a");
-				event.classList.add("event-a");
-				event.setAttribute("href", "home.html");
+		delete eventStorage.idCounter;
+		let sortedArray = UI.sortEventDates(eventStorage);
+		for (let array of sortedArray) {
+			let data = array[1];
+			let event = document.createElement("a");
+			event.addEventListener("click", UI.showEventDetailed);
+			event.className = "event-a all " + data.category;
+			event.setAttribute("href", "#");
 
-				event.innerHTML = `
+			event.innerHTML = `
 				<p>${data.category}</p>
 				<h3>${data.artistName}</h3>
 				<span>${data.date}</span>
 				<span>${data.arena}</span>
 				`;
 
-				contentDiv.append(event);
+			contentDiv.append(event);
+		}
+	}
+
+	static displaySortMenu() {
+		//Skapar en select-meny för att välja kategori att filtrera fram
+		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
+		let sortDiv = document.createElement("div");
+		let select = document.createElement("select");
+		select.id = "category-select";
+		select.innerHTML = "<option value='all'>Visa alla</option>";
+		for (let category of categories) {
+			select.innerHTML += `<option value="${category}">${category}</option>`;
+		}
+		sortDiv.append(select);
+		//Skapar knappen som filtrerar
+		let categoryButton = document.createElement("button");
+		categoryButton.textContent = "Filtrera";
+		categoryButton.setAttribute("type", "button");
+
+		categoryButton.addEventListener("click", (e) => {
+			let category = document.getElementById("category-select").value;
+			UI.filterEvents(category);
+		});
+		sortDiv.append(categoryButton);
+
+		contentDiv.append(sortDiv);
+	}
+
+	static sortEventDates(eventStorage) {
+		//sprid ut eller loopa igenom.
+
+		let entryArray = Object.entries(eventStorage);
+		return entryArray.sort((a, b) => {
+			return a[1].date.split("-").join("") - b[1].date.split("-").join("");
+		});
+	}
+
+	static filterEvents(category) {
+		//loopar igenom alla a-taggar med klassen event-a
+		let events = document.querySelectorAll("a.event-a");
+		for (let event of events) {
+			if (!event.classList.contains(category)) {
+				event.style.display = "none";
+			} else {
+				event.style.display = "block";
 			}
 		}
 	}
