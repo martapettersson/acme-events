@@ -43,6 +43,8 @@ class Arena {
 		document.getElementById("arena-name").value = arena_edit;
 		//när admin trycker Ändra då vill vi spara detta nya värde
 
+		let saveBtn = document.getElementById("arena-edit-btn");
+
 		let saveFunction = () => {
 			let arenaName = document.getElementById("arena-name").value;
 			arenaStorage[arenaStorage.indexOf(arena_edit)] = arenaName;
@@ -56,10 +58,13 @@ class Arena {
 			AdminUI.showArenas();
 			obj.updateEvents("arena", [arena_edit, arenaName]);
 			AdminUI.createSelectMenus();
+			saveBtn.removeAttribute('listener');
 		};
 
-		let saveBtn = document.getElementById("arena-edit-btn");
-		saveBtn.addEventListener("click", saveFunction);
+		if(!saveBtn.getAttribute('listener') === true){
+			saveBtn.addEventListener("click", saveFunction);
+			saveBtn.setAttribute('listener', 'added')
+		}
 	}
 }
 /*--------------SLUT ARENA------------------*/
@@ -90,6 +95,8 @@ class Category {
 		document.getElementById("category-name").value = category_edit;
 		//när admin trycker Ändra då vill vi spara detta nya värde
 
+		let saveBtn = document.getElementById("category-edit-btn");
+
 		let saveFunction = () => {
 			let categoryName = document.getElementById("category-name").value;
 			categoryStorage[categoryStorage.indexOf(category_edit)] = categoryName;
@@ -103,10 +110,13 @@ class Category {
 			AdminUI.showCategory();
 			obj.updateEvents("category", [category_edit, categoryName]);
 			AdminUI.createSelectMenus();
+			saveBtn.removeAttribute('listener')
 		};
-
-		let saveBtn = document.getElementById("category-edit-btn");
-		saveBtn.addEventListener("click", saveFunction);
+		
+		if(!saveBtn.getAttribute('listener') === true){
+			saveBtn.addEventListener("click", saveFunction);
+			saveBtn.setAttribute('listener', 'added')
+		}
 	}
 }
 
@@ -155,6 +165,8 @@ class EventControl {
 			eventStorage[id].category;
 		document.getElementById("arena-select").value = eventStorage[id].arena;
 
+		let saveBtn = document.getElementById("event-edit-btn");
+
 		let saveFunction = () => {
 			let artist = document.getElementById("artist-name").value;
 			let date = document.getElementById("date").value;
@@ -172,10 +184,15 @@ class EventControl {
 			AdminUI.clearForm();
 			AdminUI.clearTable();
 			AdminUI.showEvents();
+			saveBtn.removeAttribute('listener')
 		};
 
-		let saveBtn = document.getElementById("event-edit-btn");
-		saveBtn.addEventListener("click", saveFunction);
+		//om saveBtn har attributet listener, gör inte det här.
+		if(!saveBtn.getAttribute('listener') === true){
+			saveBtn.addEventListener("click", saveFunction);
+			saveBtn.setAttribute('listener', 'added')
+		}
+		
 	}
 
 	updateEvents(obj, valueArray) {
