@@ -28,7 +28,7 @@ class UI {
 			let data = array[1];
 			let event = document.createElement("a");
 			event.addEventListener("click", UI.showEventDetailed);
-			event.className = "event-a all " + data.category;
+			event.className = "event-a all " + data.category + " " + data.arena;
 			event.setAttribute("href", "#");
 
 			event.innerHTML = `
@@ -49,21 +49,33 @@ class UI {
 		let sortDiv = document.createElement("div");
 		let select = document.createElement("select");
 		select.id = "category-select";
-		select.innerHTML = "<option value='all'>Visa alla</option>";
+		select.innerHTML = "<option value='all'>Visa alla kategorier</option>";
 		for (let category of categories) {
 			select.innerHTML += `<option value="${category}">${category}</option>`;
 		}
 		sortDiv.append(select);
-		//Skapar knappen som filtrerar
-		let categoryButton = document.createElement("button");
-		categoryButton.textContent = "Filtrera";
-		categoryButton.setAttribute("type", "button");
 
-		categoryButton.addEventListener("click", (e) => {
-			let category = document.getElementById("category-select").value;
-			UI.filterEvents(category);
+		//Skapa select-meny för att filtrera
+		let arenas = JSON.parse(localStorage.getItem("arenaStorage"))
+		let select1 = document.createElement("select");
+		select1.id = "arena-select";
+		select1.innerHTML = "<option value='all'>Visa alla arenor</option>";
+		for (let arena of arenas) {
+			select1.innerHTML += `<option value="${arena}">${arena}</option>`;
+		}
+		sortDiv.append(select1);
+		//Skapar knappen som filtrera arena
+		
+		let arenaButton = document.createElement("button");
+		arenaButton.textContent = "Filtrera";
+		arenaButton.setAttribute("type", "button");
+
+		arenaButton.addEventListener("click", (e) => {
+			//let arena = document.getElementById("arena-select").value;
+			UI.filterEvents();
 		});
-		sortDiv.append(categoryButton);
+
+		sortDiv.append(arenaButton)
 
 		wrapper.append(sortDiv);
 	}
@@ -77,14 +89,16 @@ class UI {
 		});
 	}
 
-	static filterEvents(category) {
-		//loopar igenom alla a-taggar med klassen event-a
+	static filterEvents() {		
 		let events = document.querySelectorAll("a.event-a");
+		let arena = document.getElementById("arena-select").value;
+		let category = document.getElementById("category-select").value;
+
 		for (let event of events) {
-			if (!event.classList.contains(category)) {
-				event.style.display = "none";
-			} else {
+			if (event.classList.contains(arena) && event.classList.contains(category)) {
 				event.style.display = "block";
+			} else {
+				event.style.display = "none";
 			}
 		}
 	}
