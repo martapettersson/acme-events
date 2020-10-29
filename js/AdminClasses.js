@@ -28,6 +28,7 @@ class Arena {
 		// arenaStorage[arenaStorage.idCounter] = this.arenaArray;
 
 		localStorage.setItem("arenaStorage", JSON.stringify(arenaStorage));
+		AdminUI.createSelectMenus();
 	}
 
 	removeArena(arena_delete) {
@@ -58,12 +59,12 @@ class Arena {
 			AdminUI.showArenas();
 			obj.updateEvents("arena", [arena_edit, arenaName]);
 			AdminUI.createSelectMenus();
-			saveBtn.removeAttribute('listener');
+			saveBtn.removeAttribute("listener");
 		};
 
-		if(!saveBtn.getAttribute('listener') === true){
+		if (!saveBtn.getAttribute("listener") === true) {
 			saveBtn.addEventListener("click", saveFunction);
-			saveBtn.setAttribute('listener', 'added')
+			saveBtn.setAttribute("listener", "added");
 		}
 	}
 }
@@ -83,6 +84,7 @@ class Category {
 		categoryStorage.push(categoryName);
 
 		localStorage.setItem("categoryStorage", JSON.stringify(categoryStorage));
+		AdminUI.createSelectMenus();
 	}
 
 	removeCategory(category_delete) {
@@ -110,12 +112,12 @@ class Category {
 			AdminUI.showCategory();
 			obj.updateEvents("category", [category_edit, categoryName]);
 			AdminUI.createSelectMenus();
-			saveBtn.removeAttribute('listener')
+			saveBtn.removeAttribute("listener");
 		};
-		
-		if(!saveBtn.getAttribute('listener') === true){
+
+		if (!saveBtn.getAttribute("listener") === true) {
 			saveBtn.addEventListener("click", saveFunction);
-			saveBtn.setAttribute('listener', 'added')
+			saveBtn.setAttribute("listener", "added");
 		}
 	}
 }
@@ -184,15 +186,14 @@ class EventControl {
 			AdminUI.clearForm();
 			AdminUI.clearTable();
 			AdminUI.showEvents();
-			saveBtn.removeAttribute('listener')
+			saveBtn.removeAttribute("listener");
 		};
 
 		//om saveBtn har attributet listener, gör inte det här.
-		if(!saveBtn.getAttribute('listener') === true){
+		if (!saveBtn.getAttribute("listener") === true) {
 			saveBtn.addEventListener("click", saveFunction);
-			saveBtn.setAttribute('listener', 'added')
+			saveBtn.setAttribute("listener", "added");
 		}
-		
 	}
 
 	updateEvents(obj, valueArray) {
@@ -205,8 +206,8 @@ class EventControl {
 			}
 		}
 		localStorage.setItem("eventStorage", JSON.stringify(eventStorage));
-		AdminUI.clearTable()
-		AdminUI.showEvents()
+		AdminUI.clearTable();
+		AdminUI.showEvents();
 	}
 }
 
@@ -215,12 +216,13 @@ class AdminUI {
 
 	static createSelectMenus() {
 		//skapar options för arena och categories select-menyer
-		console.log('hej')
+		console.log("hej");
 
 		//hämta data från localStorage för kategorier.
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let categorySelect = document.getElementById("category-select");
-		categorySelect.innerHTML = '<option value="-" selected>Välj en kategori</option>'
+		categorySelect.innerHTML =
+			'<option value="-" selected>Välj en kategori</option>';
 
 		//loopa igenom varje array och sätt värdet som option.
 		for (let category of categories) {
@@ -230,7 +232,7 @@ class AdminUI {
 		//hämta data från localStorage för select.
 		let arenas = JSON.parse(localStorage.getItem("arenaStorage"));
 		let arenaSelect = document.getElementById("arena-select");
-		arenaSelect.innerHTML = '<option value="-" selected>Välj en arena</option>'
+		arenaSelect.innerHTML = '<option value="-" selected>Välj en arena</option>';
 
 		for (let arena of arenas) {
 			arenaSelect.innerHTML += `<option value="${arena}">${arena}</option>`;
