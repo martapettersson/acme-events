@@ -1,16 +1,26 @@
 const contentDiv = document.getElementById("divContent");
 class UI {
 	//statisk klass som uppdaterar allt som visas på skärmen
-	static displayHeadline() {
+
+	static createWrapper(){
 		contentDiv.innerHTML = "";
+		let wrapper = document.createElement('div')
+		wrapper.id = 'wrapper';
+		contentDiv.append(wrapper)
+
+	}
+
+	static displayHeadline() {
+		let wrapper = document.getElementById('wrapper')
 		let headline = document.createElement("h4");
 		headline.textContent = "EVENTS";
 		headline.classList.add("event-headline");
-		contentDiv.append(headline);
+		wrapper.append(headline);
 	}
 
 	static displayEvents() {
 		//den kanske bara ska få ett objekt som den skriver ut?
+		let wrapper = document.getElementById('wrapper')
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
 		delete eventStorage.idCounter;
 		let sortedArray = UI.sortEventDates(eventStorage);
@@ -28,11 +38,12 @@ class UI {
 				<span>${data.arena}</span>
 				`;
 
-			contentDiv.append(event);
+			wrapper.append(event);
 		}
 	}
 
 	static displaySortMenu() {
+		let wrapper = document.getElementById('wrapper')
 		//Skapar en select-meny för att välja kategori att filtrera fram
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let sortDiv = document.createElement("div");
@@ -54,7 +65,7 @@ class UI {
 		});
 		sortDiv.append(categoryButton);
 
-		contentDiv.append(sortDiv);
+		wrapper.append(sortDiv);
 	}
 
 	static sortEventDates(eventStorage) {

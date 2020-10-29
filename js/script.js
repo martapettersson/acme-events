@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	});
 	let eventBtn = document.getElementById("eventBtn");
 	eventBtn.addEventListener("click", function (e) {
+		UI.createWrapper();
 		UI.displayHeadline();
 		UI.displaySortMenu();
 		UI.displayEvents();
