@@ -280,6 +280,7 @@ class UI {
 		divContent.innerHTML = "";
 
 		let eventDiv = document.createElement("div");
+		eventDiv.id = "eventDivDetailed";
 		divContent.appendChild(eventDiv);
 		let eventPic = document.createElement("img");
 		let eventHeadline = document.createElement("h1");
@@ -307,31 +308,24 @@ class UI {
 			"<br />" +
 			"Arrangör: Live Nation";
 
-			const guestbook = new GuestbookControler()
-			GuestbookUI.displayGuestbook();
-			GuestbookUI.displayGuestbookPosts();
-			
+		const guestbook = new GuestbookControler();
+		GuestbookUI.displayGuestbook();
+		GuestbookUI.displayGuestbookPosts();
 
-			
-			document.getElementById("PostsSubmitBtn").addEventListener("click", (e) => {
-				guestbook.createPosts();
-				GuestbookUI.clearGuestbookForm();
+		document.getElementById("PostsSubmitBtn").addEventListener("click", (e) => {
+			guestbook.createPosts();
+			GuestbookUI.clearGuestbookForm();
+			GuestbookUI.clearGuestbookTable();
+			GuestbookUI.displayGuestbookPosts();
+		});
+
+		document.getElementById("guestbookTbody").addEventListener("click", (e) => {
+			if (e.target.classList.contains("delete")) {
+				let id = e.target.parentElement.parentElement.id;
+				guestbook.removeGuestbookPost(id);
 				GuestbookUI.clearGuestbookTable();
 				GuestbookUI.displayGuestbookPosts();
-			  });
-			
-			  document.getElementById("guestbookTbody").addEventListener("click", (e) => {
-    
-				if (e.target.classList.contains("delete")) {
-				  let id = e.target.parentElement.parentElement.id;
-				  guestbook.removeGuestbookPost(id);
-				  GuestbookUI.clearGuestbookTable();
-				  GuestbookUI.displayGuestbookPosts();
-				  
-				} 
-			  });
-			
-			
-
+			}
+		});
 	}
 }
