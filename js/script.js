@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (e) {
 	UI.showFrontPage();
-	
 
 	let homeBtn = document.getElementById("homeBtn");
 	homeBtn.addEventListener("click", function (e) {
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 	let aboutBtn = document.getElementById("aboutBtn");
 
-	// När användaren klickar på Om Oss/About-knappen skapas en ny instans av klassen About
 	aboutBtn.addEventListener("click", function (e) {
 		UI.showAbout();
 	});
@@ -27,5 +25,4 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		UI.displaySortMenu();
 		UI.displayEvents();
 	});
-	
 });

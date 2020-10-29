@@ -2,16 +2,15 @@ const contentDiv = document.getElementById("divContent");
 class UI {
 	//statisk klass som uppdaterar allt som visas på skärmen
 
-	static createWrapper(){
+	static createWrapper() {
 		contentDiv.innerHTML = "";
-		let wrapper = document.createElement('div')
-		wrapper.id = 'wrapper';
-		contentDiv.append(wrapper)
-
+		let wrapper = document.createElement("div");
+		wrapper.id = "wrapper";
+		contentDiv.append(wrapper);
 	}
 
 	static displayHeadline() {
-		let wrapper = document.getElementById('wrapper')
+		let wrapper = document.getElementById("wrapper");
 		let headline = document.createElement("h4");
 		headline.textContent = "EVENTS";
 		headline.classList.add("event-headline");
@@ -19,8 +18,7 @@ class UI {
 	}
 
 	static displayEvents() {
-		//den kanske bara ska få ett objekt som den skriver ut?
-		let wrapper = document.getElementById('wrapper')
+		let wrapper = document.getElementById("wrapper");
 		let eventStorage = JSON.parse(localStorage.getItem("eventStorage"));
 		delete eventStorage.idCounter;
 		let sortedArray = UI.sortEventDates(eventStorage);
@@ -43,11 +41,11 @@ class UI {
 	}
 
 	static displaySortMenu() {
-		let wrapper = document.getElementById('wrapper')
+		let wrapper = document.getElementById("wrapper");
 		//Skapar en select-meny för att välja kategori att filtrera fram
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let sortDiv = document.createElement("div");
-		sortDiv.id = 'sortDiv';
+		sortDiv.id = "sortDiv";
 		let select = document.createElement("select");
 		select.id = "category-select";
 		select.innerHTML = "<option value='all'>Visa alla kategorier</option>";
@@ -57,7 +55,7 @@ class UI {
 		sortDiv.append(select);
 
 		//Skapa select-meny för att filtrera
-		let arenas = JSON.parse(localStorage.getItem("arenaStorage"))
+		let arenas = JSON.parse(localStorage.getItem("arenaStorage"));
 		let select1 = document.createElement("select");
 		select1.id = "arena-select";
 		select1.innerHTML = "<option value='all'>Visa alla arenor</option>";
@@ -66,17 +64,16 @@ class UI {
 		}
 		sortDiv.append(select1);
 		//Skapar knappen som filtrera arena
-		
+
 		let arenaButton = document.createElement("button");
 		arenaButton.textContent = "Filtrera";
 		arenaButton.setAttribute("type", "button");
 
 		arenaButton.addEventListener("click", (e) => {
-			//let arena = document.getElementById("arena-select").value;
 			UI.filterEvents();
 		});
 
-		sortDiv.append(arenaButton)
+		sortDiv.append(arenaButton);
 
 		wrapper.append(sortDiv);
 	}
@@ -90,13 +87,16 @@ class UI {
 		});
 	}
 
-	static filterEvents() {		
+	static filterEvents() {
 		let events = document.querySelectorAll("a.event-a");
 		let arena = document.getElementById("arena-select").value;
 		let category = document.getElementById("category-select").value;
 
 		for (let event of events) {
-			if (event.classList.contains(arena) && event.classList.contains(category)) {
+			if (
+				event.classList.contains(arena) &&
+				event.classList.contains(category)
+			) {
 				event.style.display = "block";
 			} else {
 				event.style.display = "none";

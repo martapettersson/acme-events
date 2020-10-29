@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 		AdminUI.clearArenaTable();
 		AdminUI.showArenas();
 	});
-	/*---------------SLUT PÅ ARENA-------------*/
 	/*---------------Category-------------*/
 	document.getElementById("category-table").addEventListener("click", (e) => {
 		//Sätter en eventlistener på tabellen i admingränstsnittet. När man trycker på delete körs metoderna nedan
@@ -86,7 +85,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			let category_edit =
 				e.target.parentElement.parentElement.firstElementChild.innerHTML;
 			category.editCategory(category_edit, eventcontrol);
-			//gör om detta till metod?
 			document.getElementById("category-submit-btn").style.display = "none";
 			document.getElementById("category-edit-btn").style.display = "inline";
 		}

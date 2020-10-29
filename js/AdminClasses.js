@@ -68,8 +68,8 @@ class Arena {
 		}
 	}
 }
-/*--------------SLUT ARENA------------------*/
 
+/*--------------KATEGORI------------------*/
 class Category {
 	constructor() {
 		if (localStorage.getItem("categoryStorage") === null) {
@@ -95,7 +95,7 @@ class Category {
 	editCategory(category_edit, obj) {
 		let categoryStorage = JSON.parse(localStorage.getItem("categoryStorage"));
 		document.getElementById("category-name").value = category_edit;
-		//när admin trycker Ändra då vill vi spara detta nya värde
+		//när admin trycker EDIT då vill vi spara detta nya värde
 
 		let saveBtn = document.getElementById("category-edit-btn");
 
