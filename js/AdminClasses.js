@@ -198,6 +198,7 @@ class AdminUI {
 
 	static createSelectMenus() {
 		//skapar options för arena och categories select-menyer
+		console.log('hej')
 
 		//hämta data från localStorage för kategorier.
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));

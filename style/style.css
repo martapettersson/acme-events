@@ -159,10 +159,10 @@ button:hover {
 	display: flex;
 }
 
-.page-footer small {
-	
-	
-
+#sortDiv {
+	display: flex;
+	width: 40%;
+	justify-content: space-between;
 }
 
 /*

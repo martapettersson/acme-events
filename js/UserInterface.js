@@ -47,6 +47,7 @@ class UI {
 		//Skapar en select-meny för att välja kategori att filtrera fram
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let sortDiv = document.createElement("div");
+		sortDiv.id = 'sortDiv';
 		let select = document.createElement("select");
 		select.id = "category-select";
 		select.innerHTML = "<option value='all'>Visa alla kategorier</option>";
