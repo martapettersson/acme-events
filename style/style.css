@@ -18,6 +18,7 @@ button {
 	font-size: 1em;
 	text-transform: uppercase;
 	border: none;
+	cursor: pointer;
 }
 
 button:hover {
@@ -129,6 +130,7 @@ button:hover {
 
 .frontDiv:hover {
 	opacity: 0.6;
+	cursor: pointer;
 }
 
 .page-footer {
