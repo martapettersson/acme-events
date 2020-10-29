@@ -81,6 +81,52 @@ button:hover {
 	max-width: 510px;
 }
 
+#divGuestBook {
+	float: right;
+	max-width: 510px;
+	margin-bottom: 100px;
+}
+
+#guestbookForm {
+	max-width: 510px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+#PostsSubmitBtn {
+	align-self: flex-start;
+}
+#eventDivDetailed {
+	max-height: 400px;
+}
+
+#guestbookTbody {
+	display: flex;
+	width: 400px;
+	flex-flow: wrap column;
+}
+#guestbookTbody td.name {
+	font-weight: bold;
+}
+#guestbookTbody tr {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-bottom: 2px solid black;
+}
+
+#guestbookTbody td {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#guestbookTbody button {
+	display: flex;
+	margin-top: 1em;
+}
+
 .frontDiv:hover {
 	opacity: 0.6;
 }
@@ -99,14 +145,14 @@ button:hover {
 	margin-bottom: 1em;
 	width: 100%;
 	margin: auto;
-	justify-content: center;
+	justify-content: flex-start;
+	padding-left: 0;
 }
 .page-footer ul li {
 	margin-right: 2em;
 }
 .page-footer button {
 	display: flex;
-	align-self: flex-end;
 }
 /*
 #4e3436 - WOODY BROWN
