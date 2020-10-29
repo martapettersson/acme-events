@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			eventcontrol.updateEvents("arena", [arena_delete, ""]);
 			AdminUI.clearArenaTable();
 			AdminUI.showArenas();
+			AdminUI.createSelectMenus();
 
 			//om man trycker på edit körs koden nedan
 		} else if (e.target.classList.contains("edit")) {

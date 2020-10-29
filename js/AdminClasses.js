@@ -200,6 +200,7 @@ class AdminUI {
 		//hämta data från localStorage för kategorier.
 		let categories = JSON.parse(localStorage.getItem("categoryStorage"));
 		let categorySelect = document.getElementById("category-select");
+		categorySelect.innerHTML = '<option value="-" selected>Välj en kategori</option>'
 
 		//loopa igenom varje array och sätt värdet som option.
 		for (let category of categories) {
@@ -209,6 +210,7 @@ class AdminUI {
 		//hämta data från localStorage för select.
 		let arenas = JSON.parse(localStorage.getItem("arenaStorage"));
 		let arenaSelect = document.getElementById("arena-select");
+		arenaSelect.innerHTML = '<option value="-" selected>Välj en arena</option>'
 
 		for (let arena of arenas) {
 			arenaSelect.innerHTML += `<option value="${arena}">${arena}</option>`;
