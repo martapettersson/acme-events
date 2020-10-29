@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 			eventcontrol.updateEvents("category", [category_delete, ""]);
 			AdminUI.clearCategoryTable();
 			AdminUI.showCategory();
+			AdminUI.createSelectMenus();
 
 			//om man trycker på edit körs koden nedan
 		} else if (e.target.classList.contains("edit")) {

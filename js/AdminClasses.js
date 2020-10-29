@@ -55,6 +55,7 @@ class Arena {
 			AdminUI.clearArenaTable();
 			AdminUI.showArenas();
 			obj.updateEvents("arena", [arena_edit, arenaName]);
+			AdminUI.createSelectMenus();
 		};
 
 		let saveBtn = document.getElementById("arena-edit-btn");
@@ -101,6 +102,7 @@ class Category {
 			AdminUI.clearCategoryTable();
 			AdminUI.showCategory();
 			obj.updateEvents("category", [category_edit, categoryName]);
+			AdminUI.createSelectMenus();
 		};
 
 		let saveBtn = document.getElementById("category-edit-btn");
