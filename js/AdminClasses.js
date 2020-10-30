@@ -243,7 +243,7 @@ class AdminUI {
 		let keys = Object.keys(eventStorage).sort();
 		for (let key of keys) {
 			if (key !== "idCounter") {
-				//let eventObject = JSON.parse(localStorage.getItem(key));
+				
 				let eventObject = eventStorage[key];
 				let table = document.getElementById("event-table");
 				let tr = document.createElement("tr");

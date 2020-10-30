@@ -14,7 +14,8 @@ class GuestbookControler {
 			);
 		}
 	}
-
+	//skapar ett nytt guestbookObjekt. Hämtar guestbookStorage från localstorage och lägger in det nya objektet. Lägger till ++ på id-counter
+	//och uppdaterar guestbookStorage i localStorage
 	createPosts() {
 		let name = document.getElementById("name").value;
 		let posts = document.getElementById("comment").value;
@@ -25,12 +26,14 @@ class GuestbookControler {
 		guestbookStorage.idCounter++;
 		localStorage.setItem("guestbookStorage", JSON.stringify(guestbookStorage));
 	}
+	//Tar bort guestbookObjekt från local storage
 	removeGuestbookPost(id) {
 		let guestbookStorage = JSON.parse(localStorage.getItem("guestbookStorage"));
 		delete guestbookStorage[id];
 		localStorage.setItem("guestbookStorage", JSON.stringify(guestbookStorage));
 	}
 }
+//Class som innehåller metoder som skapar Gästbok och Gästboksinlägg
 class GuestbookUI {
 	static displayGuestbook() {
 		let divGuestbook = document.createElement("div");
@@ -73,7 +76,8 @@ class GuestbookUI {
 		guestbookPostDiv.appendChild(guestbookTable);
 		contentDiv.appendChild(guestbookPostDiv);
 	}
-
+	//Metod för att skapa Gästboksinlägg
+	// Går igenom alla Gästboksinlägg och skriver ut i en tabell
 	static displayGuestbookPosts() {
 		let guestbookStorage = JSON.parse(localStorage.getItem("guestbookStorage"));
 		let keys = Object.keys(guestbookStorage).sort();
@@ -96,13 +100,14 @@ class GuestbookUI {
 			}
 		}
 	}
+	//Rensar tabellen med Gästboksinlägg
 	static clearGuestbookTable() {
 		let postsTable = document.getElementById("guestbookTbody");
 
 		postsTable.innerHTML =
 			"<tr>" + postsTable.firstElementChild.innerHTML + "</tr>";
 	}
-
+	//Återställer Gästboksformuläret
 	static clearGuestbookForm() {
 		document.getElementById("guestbookForm").reset();
 	}
